@@ -1,0 +1,150 @@
+body {
+    font-family: Futura,"Trebuchet MS",Arial,sans-serif;
+    margin: 0;
+    background-color: #666666;
+}
+header {
+    background-color:#333333;
+}
+
+header div ul li {
+    float: left;
+    list-style: none;
+    width: 200px;
+    background-color: #FF6600;
+    padding: 25px;
+}
+
+header div ul li.cliked,
+header div ul li:hover {
+    color:#FF6600;
+    background-color: #666666;   
+}
+
+header div ul li a{
+    color:white;
+    font-size: 18px;
+    line-height: 24px;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+header div #divlogo {
+    margin-left: auto ;
+    margin-right: auto ;
+    padding: 20px;
+    width: 1000px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 40px; 
+}
+
+
+header div #divlogo a#logo{
+    color: #FF6600;
+    text-decoration: none;
+    font-size: 40px;
+    
+}
+header div ul {
+    margin-bottom: 0;
+    width: 1000px;
+    margin-left: auto ;
+    margin-right: auto ;
+    list-style: none;
+    overflow: hidden;
+    text-align: center;
+    padding: 0;
+}
+
+#main {
+    color: white;
+    background-color: #333333;
+    width: 1000px ;
+    height: 1500px;
+    margin-left: auto ;
+    margin-right: auto ;
+}
+
+#maintype1 {
+    width:900px;
+    height: 400px;
+    margin:0;
+    float:left;
+    padding:50px;
+
+}
+#maintype1 h1{
+    text-align: center;
+    background-color: #666666;
+    padding: 10px;
+    margin: 0;
+
+}
+
+#maintype1 p{
+    text-align: center;
+    margin: 0;
+
+}
+#maintype1 ul{
+    list-style: none;
+    margin-top:50px;
+    margin-bottom: 50px;
+    
+}
+.text1 {
+    width: 320px;
+    float:left;
+    padding: 20px;
+    text-align: center;
+    font-size: 30px;
+}
+#maintype1 ul li #image {
+    width: 400px;
+    float:left;
+}
+
+#maintype2 {
+    width:900px;
+    height: 400px;
+    margin:0;
+    float:left;
+    padding:50px;
+
+}
+#maintype2 h1{
+    text-align: center;
+    background-color: #666666;
+    padding: 10px;
+    margin: 0;
+
+}
+
+.text2 {
+    width: 800px;
+    font-size: 30px;
+    padding:20px;
+}
+
+IMG.image {
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+#footertext{
+    padding: 20px;
+}
+
+#footer #hr {
+    height: 3px;
+    background-color: #FF6600;
+}
+
+
