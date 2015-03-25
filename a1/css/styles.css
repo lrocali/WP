@@ -7,50 +7,29 @@ header {
     background-color:#333333;
 }
 
-header div ul li {
-    float: left;
-    list-style: none;
-    width: 200px;
-    background-color: #FF6600;
-    padding: 25px;
-}
-
-header div ul li.cliked,
-header div ul li:hover {
-    color:#FF6600;
-    background-color: #666666;   
-}
-
-header div ul li a{
-    color:white;
-    font-size: 18px;
-    line-height: 24px;
-    text-decoration: none;
-    text-transform: uppercase;
-    text-align: center;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    padding-left: 50px;
-    padding-right: 50px;
-}
-header div #divlogo {
+.logoArea {
     margin-left: auto ;
     margin-right: auto ;
-    padding: 20px;
+    padding: 50px;
     width: 1000px;
     text-align: center;
     text-decoration: none;
     font-size: 40px; 
 }
 
+.logoImage {
+    width: 40px;
+    height: 40px;
+}
 
-header div #divlogo a#logo{
+.logoText{
     color: #FF6600;
     text-decoration: none;
     font-size: 40px;
     
 }
-header div ul {
+
+.menuBar {
     margin-bottom: 0;
     width: 1000px;
     margin-left: auto ;
@@ -61,7 +40,34 @@ header div ul {
     padding: 0;
 }
 
-#main {
+.menuButtons {
+    float: left;
+    list-style: none;
+    width: 200px;
+    background-color: #FF6600;
+    padding: 25px;
+}
+
+.menuButtons:hover {
+    color: white;
+    color:#FF6600;
+    background-color: #666666;   
+}
+
+.menuTexts{
+    color:black;
+    font-size: 20px;
+    line-height: 24px;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.main {
     color: white;
     background-color: #333333;
     width: 1000px ;
@@ -70,7 +76,7 @@ header div ul {
     margin-right: auto ;
 }
 
-#maintype1 {
+.subMain {
     width:900px;
     height: 400px;
     margin:0;
@@ -78,7 +84,8 @@ header div ul {
     padding:50px;
 
 }
-#maintype1 h1{
+
+.subMainTitle{
     text-align: center;
     background-color: #666666;
     padding: 10px;
@@ -86,65 +93,70 @@ header div ul {
 
 }
 
-#maintype1 p{
+.subMain p{
     text-align: center;
     margin: 0;
 
 }
-#maintype1 ul{
+.subMain ul{
     list-style: none;
     margin-top:50px;
     margin-bottom: 50px;
     
 }
-.text1 {
+.subMain1Text {
     width: 320px;
     float:left;
     padding: 20px;
     text-align: center;
     font-size: 30px;
 }
-#maintype1 ul li #image {
-    width: 400px;
-    float:left;
-}
 
-#maintype2 {
-    width:900px;
-    height: 400px;
-    margin:0;
-    float:left;
-    padding:50px;
-
-}
-#maintype2 h1{
-    text-align: center;
-    background-color: #666666;
-    padding: 10px;
-    margin: 0;
-
-}
-
-.text2 {
+.subMain2Text {
     width: 800px;
     font-size: 30px;
     padding:20px;
 }
 
-IMG.image {
-    margin-top: 20px;
+.subMain1Image {
+    height: 100px;
+    margin-top: 10px;
     display: block;
     margin-left: auto;
-    margin-right: auto
+    margin-right: auto;
 }
 
-#footertext{
+.subMain2Image {
+    margin-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer {
+    margin-left: auto;
+    margin-right: auto;
+}
+.footerArea {
     padding: 20px;
+    font-size: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
-#footer #hr {
+.footerValidator {
+    border:0;
+    height:25px;
+}
+
+.hr {
     height: 3px;
     background-color: #FF6600;
+}
+
+.inputObject {
+    padding: 30px;
 }
 
 

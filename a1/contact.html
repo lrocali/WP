@@ -3,75 +3,73 @@
 <html>
 <head>
     <title>Web Programming - Assignment 1</title>
-    <link rel="stylesheet"href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-	<script>
-		function checkForm() {
-			var x = document.forms["contactForm"]["email"].value;
-			var y = document.forms["contactForm"]["message"].value;
-			if (x == null || x == "") {
-				alert("Email must be filled out");
-			return false;
-			}
-			else if (y == null || y == "") {
-				alert("Message must be filled out");
-			return false;
-			}
-		}
+    <script>
+    function checkForm() {
+	var x = document.forms["contactForm"]["email"].value;
+	var y = document.forms["contactForm"]["message"].value;
+	if (x == null || x == "") {
+	    alert("Email must be filled out");
+	    return false;
+	}
+	else if (y == null || y == "") {
+	    alert("Message must be filled out");
+	    return false;
+	}
+    }
 	</script>
     <header>
         <div>
-            <div id="divlogo">
-                <img class="imagelogo" src="images/filmreel.png" width= 40 height= 40 alt="Silverado Cinema" />
-                <a href="index.html" id ="logo"><strong>SILVERADO CINEMA</strong></a>
+            <div class="logoArea">
+                <img class="logoImage" src="images/filmreel.png"  alt= "Silverado Cinema" />
+                <a href="index.html" class="logoText"><strong>SILVERADO CINEMA</strong></a>
             </div>
-            <ul>
-                <li class="clicked">
-                    <a href="index.html">Home</a>
+            <ul class = "menuBar">
+                <li class="menuButtons">
+                    <a class ="menuTexts" href="index.html">Home</a>
                 </li>
-                <li class="clicked">
-                    <a href="index.html">Ticket</a>
+                <li class="menuButtons">
+                    <a class ="menuTexts" href="index.html">Ticket</a>
                 </li>
-                <li class="clicked">
-                    <a href="index.html">Movies</a>
+                <li class="menuButtons">
+                    <a class ="menuTexts" href="index.html">Movies</a>
                 </li>
-                <li class="clicked">
-                    <a href="contact.html">Contact</a>
+                <li class="menuButtons">
+                    <a class ="menuTexts" href="contact.html">Contact</a>
                 </li>
             </ul>
         </div>
     </header>
-    <div id="main">
-        <div id="maintype2">
-            <h1>Contact</h1>
-            <p>
+    <div class="main">
+        <div class="subMain">
+            <h1 class="subMainTitle">Contact</h1>
                 <form name="contactForm"  method='post' action='http://titan.csit.rmit.edu.au/~e54061/wp/form-tester.php' onsubmit="return checkForm()">
-					<br><br>
-					E-mail: <input type="email" name="email"><br>
-					<br><br>
-					Subject:  <select name="subject">
-					<option value="genEnq">General Enquiry</option>
-					<option value="GroCorBoo">Group and Corporate Bookings</option>
-					<option value="SugCom">Suggestions & Complaints</option>
-					</select>
-					</br></br>
-					Message: <textarea name="message" rows="5" cols="130" ></textarea>
-					 </br></br>
-					<input type="submit" value="submit"> 
-				</form>
-            </p>
+		    <div class="inputObject">E-mail: <input type="email" name="email"><br> </div>
+		    <div class="inputObject">Subject:  <select name="subject">
+		    <option value="genEnq">General Enquiry</option>
+		    <option value="GroCorBoo">Group and Corporate Bookings</option>
+		    <option value="SugCom">Suggestions & Complaints</option>
+		    </select></div>
+		    <div class="inputObject">Message: <textarea name="message" rows="5" cols="130" ></textarea></div>
+		    <div class="inputObject"><input type="submit" value="submit"> </div>
+		</form>
+        </div>
+	<div class="subMain">
+            <ul>
+                
+            </ul>
         </div>
     </div>
-	<div id="footer">
-        <div id="hr"></div>
-        <div id="footertext">
-            <p>Lucas Rocali Assuncao Assis s3495204, Syed Taimor Shah s3429714
-        <a href= "http://validator.w3.org/check?uri=https://titan.csit.rmit.edu.au/~s3495204/wp/a1/contact.html"> Validator </a>
-         </p>
+    <footer>
+        <div class="hr"></div>
+        <div class="footerArea">
+                &copy;Lucas Rocali Assuncao Assis s3495204 and Syed Taimor Shah s3429714 | 2015 | 
+                <a href="http://validator.w3.org/check?uri=https://titan.csit.rmit.edu.au/~s3495204/wp/a1/contact.html"><img class="footerValidator"
+                src="images/HTML5_Logo_32.png" alt="HTML Validator" /></a>
         </div>
-    </div>
-
+    </footer>
 </body>
 </html>
