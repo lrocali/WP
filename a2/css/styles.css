@@ -1,0 +1,162 @@
+body {
+    font-family: Futura,"Trebuchet MS",Arial,sans-serif;
+    margin: 0;
+    background-color: #666666;
+}
+header {
+    background-color:#333333;
+}
+
+.logoArea {
+    margin-left: auto ;
+    margin-right: auto ;
+    padding: 50px;
+    width: 1000px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 40px; 
+}
+
+.logoImage {
+    width: 40px;
+    height: 40px;
+}
+
+.logoText{
+    color: #FF6600;
+    text-decoration: none;
+    font-size: 40px;
+    
+}
+
+.menuBar {
+    margin-bottom: 0;
+    width: 1000px;
+    margin-left: auto ;
+    margin-right: auto ;
+    list-style: none;
+    overflow: hidden;
+    text-align: center;
+    padding: 0;
+}
+
+.menuButtons {
+    float: left;
+    list-style: none;
+    width: 200px;
+    background-color: #FF6600;
+    padding: 25px;
+}
+
+.menuButtons:hover {
+    color: white;
+    color:#FF6600;
+    background-color: #666666;   
+}
+
+.menuTexts{
+    color:black;
+    font-size: 20px;
+    line-height: 24px;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.main {
+    color: white;
+    background-color: #333333;
+    width: 1000px ;
+    height: 1500px;
+    margin-left: auto ;
+    margin-right: auto ;
+}
+
+.subMain {
+    width:900px;
+    height: 400px;
+    margin:0;
+    float:left;
+    padding:50px;
+
+}
+
+.subMainTitle{
+    text-align: center;
+    background-color: #666666;
+    padding: 10px;
+    margin: 0;
+
+}
+
+.subMain p{
+    text-align: center;
+    margin: 0;
+
+}
+.subMain ul{
+    list-style: none;
+    margin-top:50px;
+    margin-bottom: 50px;
+    
+}
+.subMain1Text {
+    width: 320px;
+    float:left;
+    padding: 20px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.subMain2Text {
+    width: 800px;
+    font-size: 30px;
+    padding:20px;
+}
+
+.subMain1Image {
+    height: 100px;
+    margin-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.subMain2Image {
+    margin-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer {
+    margin-left: auto;
+    margin-right: auto;
+}
+.footerArea {
+    padding: 20px;
+    font-size: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.footerValidator {
+    border:0;
+    height:25px;
+}
+
+.hr {
+    height: 3px;
+    background-color: #FF6600;
+}
+
+.inputObject {
+    padding: 30px;
+}
+
+
