@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Web Programming - Assignment 1</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+</script>
+</head>
+
+<body onload="getTicketInfo()">
+    <header>
+        <div>
+            <div class="logoArea">
+                <img class="logoImage" src="images/filmreel.png"  alt= "Silverado Cinema" />
+                <a href="index.html" class="logoText"><strong>SILVERADO CINEMA</strong></a>
+            </div>
+            <ul class = "menuBar">
+                <li class="menuButtons">
+                    <a class ="menuTexts" href="index.html"><strong>Home</strong></a>
+                </li>
+                <li class="menuButtons">
+                    <a class ="menuTexts" href="ticket.html"><strong>Ticket</strong></a>
+                </li>
+                <li class="menuButtons">
+                    <a class ="menuTexts" href="index.html"><strong>Movies</strong></a>
+                </li>
+                <li class="menuButtons">
+                    <a class ="menuTexts" href="contact.html"><strong>Contact</strong></a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div class="main">
+        <div class="subMain" onchange="refreshTicketInfo()">
+            <h1 class="subMainTitle">Book Tickets</h1>
+            <div class="hrSubMain"></div>
+            <div class ="form">
+            <form name="ticketForm"  method='post' action='http://titan.csit.rmit.edu.au/~e54061/wp/form-tester-2.php' onsubmit="return bookMovie()">
+            <div id="movieOpt" >Film Name: </div>
+            <div id="dayOpt">Session Day: </div>
+            <div id="timeOpt">Session Time: </div>
+            <br>
+            </div>
+        </div>
+            <div id="tickets"></div>
+            <div class="movieButton">
+            <a class ="movieButtonText" onclick="bookMovie()">Book</a>
+
+            <!--div class="inputObject">Film Name:</br><input type="text" name="film"><br> </div>
+            <div class="inputObject">Subject:</br><select name="day">
+            <option value="Mon">General Enquiry</option>
+            <option value="Tue">Group and Corporate Bookings</option>
+            <option value="Wedd">Suggestions & Complaints</option>
+            </select></div>
+            <div class="inputObject">Message:</br><textarea name="message" rows="5" cols="50" ></textarea></div>-->
+            <div class="inputObject"><input type="submit" value="submit"> </div>
+        </div>
+        </form>
+
+    </div>
+    <footer>
+        <div class="hr"></div>
+        <div class="footerArea">
+                &copy;Lucas Rocali Assuncao Assis s3495204 | 2015 |
+                <a href="http://validator.w3.org/check?uri=https://titan.csit.rmit.edu.au/~s3495204/wp/a1/index.html"><img class="footerValidator"
+                src="images/HTML5_Logo_32.png" alt="HTML Validator" /></a>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

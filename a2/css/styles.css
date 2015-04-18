@@ -10,11 +10,10 @@ header {
 .logoArea {
     margin-left: auto ;
     margin-right: auto ;
-    padding: 50px;
+    padding: 15px;
     width: 1000px;
     text-align: center;
     text-decoration: none;
-    font-size: 40px; 
 }
 
 .logoImage {
@@ -25,7 +24,7 @@ header {
 .logoText{
     color: #FF6600;
     text-decoration: none;
-    font-size: 40px;
+    font-size: 50px;
     
 }
 
@@ -49,14 +48,13 @@ header {
 }
 
 .menuButtons:hover {
-    color: white;
     color:#FF6600;
     background-color: #666666;   
 }
 
 .menuTexts{
     color:black;
-    font-size: 20px;
+    font-size: 25px;
     line-height: 24px;
     text-decoration: none;
     text-transform: uppercase;
@@ -66,22 +64,35 @@ header {
     padding-left: 50px;
     padding-right: 50px;
 }
+.menuTexts:hover{
+    color:white;
+}
 
 .main {
     color: white;
     background-color: #333333;
     width: 1000px ;
-    height: 1500px;
+    min-height: 1000px;
     margin-left: auto ;
     margin-right: auto ;
 }
 
+.contactMain {
+    color: white;
+    background-color: #333333;
+    width: 1000px ;
+    min-height: 500px;
+    margin-left: auto ;
+    margin-right: auto ;
+}
+
+
 .subMain {
-    width:900px;
-    height: 400px;
+    width:950px;
+    max-height: 1000px;
     margin:0;
     float:left;
-    padding:50px;
+    padding:25px;
 
 }
 
@@ -132,6 +143,78 @@ header {
     margin-left: auto;
     margin-right: auto;
 }
+.hrSubMain {
+    height: 6px;
+    background-color: #FF6600;
+    margin-bottom: 10px;
+}
+
+.hrMovie{
+    height: 6px;
+    background-color: #666666;
+}
+.movie {
+    width: 450px;
+    height: 300px;
+    float: left;
+    padding: 10px;
+    border-color: black;
+}
+
+.movieImage {
+    width: 200px;
+    height: 300px;
+}
+
+.movieDetail {
+    float: right;
+    width:240px;
+    height:300px;
+}
+
+.movieDetail h1{
+    font-size: 18px;
+    text-align: center;
+
+}
+.movieDetail p{
+    font-size: 14px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.movieButton {
+    list-style: none;
+    width: 100px;
+    background-color: #FF6600;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.movieButton:hover {
+    color:#FF6600;
+    background-color: #666666;  
+    color:white; 
+}
+
+.movieButtonText {
+    color:black;
+    font-size: 14px;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.movieButtonText:hover{
+    color:white;
+}
+
+.form {
+    padding: 20px;
+}
 
 footer {
     margin-left: auto;
@@ -156,7 +239,7 @@ footer {
 }
 
 .inputObject {
-    padding: 30px;
+    padding: 10px;
 }
 
 

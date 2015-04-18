@@ -4,9 +4,11 @@
 <head>
     <title>Web Programming - Assignment 1</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script>
+</script>
 </head>
 
-<body>
+<body onload="getInfo()">
     <header>
         <div>
             <div class="logoArea">
@@ -15,70 +17,95 @@
             </div>
             <ul class = "menuBar">
                 <li class="menuButtons">
-                    <a class ="menuTexts" href="index.html">Home</a>
+                    <a class ="menuTexts" href="index.html"><strong>Home</strong></a>
                 </li>
                 <li class="menuButtons">
-                    <a class ="menuTexts" href="index.html">Ticket</a>
+                    <a class ="menuTexts" href="ticket.html"><strong>Ticket</strong></a>
                 </li>
                 <li class="menuButtons">
-                    <a class ="menuTexts" href="index.html">Movies</a>
+                    <a class ="menuTexts" href="index.html"><strong>Movies</strong></a>
                 </li>
                 <li class="menuButtons">
-                    <a class ="menuTexts" href="contact.html">Contact</a>
+                    <a class ="menuTexts" href="contact.html"><strong>Contact</strong></a>
                 </li>
             </ul>
         </div>
     </header>
     <div class="main">
         <div class="subMain">
-            <h1 class="subMainTitle">Re-opening</h1>
-            <ul>
-                <li><div  class="subMain1Text">
-                    New seats
-                    </div>
-                    <div>
-                    <img class="subMain1Image" src="images/seat.png" alt="New seats" />
-                    </div>
-                </li>
-                <li><div  class="subMain1Text">
-                    3D projections
-                    </div>
-                    <div>
-                    <img class="subMain1Image" src="images/3d.png" alt="3D" />
-                    </div>
-                </li>
-                <li><div  class="subMain1Text">
-                    Dolby Sound system
-                    </div>
-                    <div>
-                    <img class="subMain1Image" src="images/dolby.jpg" alt="Dolby Sound System" />
-                    </div>
-                </li>
-            </ul>
+            <h1 class="subMainTitle">Top Movies</h1>
+            <div class="hrSubMain"></div>
+            <!-- images, synopsis, genres of movies based on hoyts.com.au-->
+        <div class = "movie">
+                <img class="movieImage"
+                src="images/americanSniper.jpg" alt="AmericanSniper" />
+                <div class = "movieDetail">
+                    <h1 id="title1"></h1>
+                    <p id="synopsis1"></p>
+                    <p id="genre1"></p>
+                    <p id="time1"></p>
+                    <div class="movieButton">
+                    <a class ="movieButtonText" href="ticket.html" id="movie1" onclick="selectedMovie(id)">Book</a>
+                     </div>
+
+                </div>
+                <div class="hrMovie" onload="myFunction()"></div>
         </div>
-    <div class="subMain">
-            <h1 class="subMainTitle">New cinema floor plans</h1>
-            <ul>
-                <li><div class="subMain2Text">
-                    40 Normal seats (Full, Concession and Child under 12 pricing options)
-                </div></li>
-                <li><div class="subMain2Text">
-                    12 First Class seats (Full and Child pricing options)
-                </div></li>
-                <li><div class="subMain2Text">
-                    13 Bean Bag seats that can accommodate 2 adults, 1 adult + 1 child OR 3 children (under 12)
-                </div></li>
-            </ul>
-            <img class="subMain2Image" src="images/floorplan.jpg" width=700 height=400 alt="Foor plan" />
+        <div class = "movie">
+            <img class="movieImage"
+                src="images/home.jpg" alt="Home" />
+                <div class = "movieDetail">
+                    <h1 id="title2"></h1>
+                    <p id="synopsis2"></p>
+                    <p id="genre2"></p>
+                    <p id="time2"></p>
+                    <div class="movieButton">
+                    <a class ="movieButtonText" href="ticket.html" id="movie2" onclick="selectedMovie(id)">Book</a>
+                     </div>
+
+                </div>
+                <div class="hrMovie"></div>
+        </div>
+        <div class = "movie">
+            <img class="movieImage"
+                src="images/youAreMyBoss.jpg" alt="You're my boss" />
+                <div class = "movieDetail">
+                    <h1 id="title3"></h1>
+                    <p id="synopsis3"></p>
+                    <p id="genre3"></p>
+                    <p id="time3"></p>
+                    <div class="movieButton">
+                    <a class ="movieButtonText" href="ticket.html" id="movie3" onclick="selectedMovie(id)">Book</a>
+                     </div>
+
+                </div>
+                <div class="hrMovie"></div>
+        </div>
+        <div class = "movie">
+            <img class="movieImage"
+                src="images/theSoundsOfMusic.jpg" alt="The Sounds of Music" />
+                <div class = "movieDetail">
+                    <h1 id="title4"></h1>
+                    <p id="synopsis4"></p>
+                    <p id="genre4"></p>
+                    <p id="time4"></p>
+                    <div class="movieButton">
+                    <a class ="movieButtonText" href="ticket.html" id="movie4" onclick="selectedMovie(id)">Book</a>
+                     </div>
+
+                </div>
+                <div class="hrMovie"></div>
+        </div>
         </div>
     </div>
     <footer>
         <div class="hr"></div>
         <div class="footerArea">
-                &copy;Lucas Rocali Assuncao Assis s3495204 and Syed Taimor Shah s3429714 | 2015 | 
+                &copy;Lucas Rocali Assuncao Assis s3495204 | 2015 |
                 <a href="http://validator.w3.org/check?uri=https://titan.csit.rmit.edu.au/~s3495204/wp/a1/index.html"><img class="footerValidator"
                 src="images/HTML5_Logo_32.png" alt="HTML Validator" /></a>
         </div>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>
