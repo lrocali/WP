@@ -25,8 +25,8 @@ var movie3 = {
 	synopsis:"Pong (Coco Martin) is an executive assistant in an airline company where Georgina Lorenzana (Toni Gonzaga) is an assistant vice presiden.",
 	genre:"RC",
 	genreName:"Romantic Comedy",
-	days:["Mon, Tue","Wed, Thu,Fri ","Sat, Sun"],
-	times:["9pm","1pm","6pm"],
+	days:["Mon, Tue","Wed, Thu, Fri","Sat, Sun"],
+	times:["1pm","6pm","9pm"],
 	sessions:""
 
 };
@@ -36,8 +36,8 @@ var movie4 = {
 	synopsis:"A woman leaves an Austrian convent to become a governess to the children of a Naval officer widower.",
 	genre:"AF",
 	genreName:"Art/ Foreign Filme",
-	days:["Mon, Tue","Sat,Sun "],
-	times:["6pm","3pm"],
+	days:["Mon, Tue","Sat, Sun"],
+	times:["3pm","6pm"],
 	sessions:""
 
 };
@@ -151,19 +151,21 @@ function getTicketInfo() {
 	//create movie session TIME select option
 	var timeOpt = document.getElementById("timeOpt");
 
-	var times = getTimes(window.name);
+	var time = getTimes(days[0],window.name);
+	//
+	//var timeOpt = document.getElementById("timeOpt");
+
+	//var times = getTimes(window.name);
 
 	var timeOptions = document.createElement("select");
 	timeOptions.id = "time";
 	timeOptions.name = "time";
 	timeOpt.appendChild(timeOptions);
-
-	for (var i = 0; i < times.length; i++) {
 			var option = document.createElement("option");
-			option.value = times[i];
-			option.text = times[i];
+			option.value = time;
+			option.text = time;
 			timeOptions.appendChild(option);
-	}
+
 	tableCreate();
 }
 
@@ -236,8 +238,46 @@ function refreshPrice(){
 
 function calculatePrice(day,time,type, quantity){
 	var price = parseInt(quantity);
-	//if(day==)
-	alert(time);
+	if(day=="Mon, Tue" || (day=="Wed, Thu, Fri" && time=="1pm")) {
+		if(type=="SA"){
+			price=quantity*12;
+		}
+		if(type=="SP"){
+			price=quantity*10;
+		}
+		if(type=="SC"){
+			price=quantity*8;
+		}
+		if(type=="FA"){
+			price=quantity*25;
+		}
+		if(type=="FC"){
+			price=quantity*20;
+		}
+		if(type=="B1" || type=="B2" || type=="B3"){
+			price=quantity*20;
+		}
+	}
+	else{
+		if(type=="SA"){
+			price=quantity*18;
+		}
+		if(type=="SP"){
+			price=quantity*15;
+		}
+		if(type=="SC"){
+			price=quantity*12;
+		}
+		if(type=="FA"){
+			price=quantity*30;
+		}
+		if(type=="FC"){
+			price=quantity*25;
+		}
+		if(type=="B1" || type=="B2" || type=="B3"){
+			price=quantity*30;
+		}
+	}
 	return price;
 
 }
@@ -267,7 +307,7 @@ function refreshTicketInfo(){
 	    option.text = times[i];
 	    timeOptions.appendChild(option);
 	}
-
+	refreshPrice();
 
 }
 
@@ -293,11 +333,13 @@ function getDays(movie){
 	return dayss
 }
 
-function getTimes(movie){
-	var timess = []
+function getTimes(day,movie){
+	var timess = "";
 	//alert(movie);
 	if (movie == movie1.title) {
-		timess = movie1.times;
+		if(day==movie1.days[0]){
+			timess = movie1.times[0];
+		}
 	}
 	else if (movie == movie2.title) {
 		timess = movie2.times;

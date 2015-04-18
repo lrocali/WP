@@ -32,21 +32,19 @@
         </div>
     </header>
     <div class="main">
-        <div class="subMain" onchange="refreshTicketInfo()">
+        <div class="subMain">
             <h1 class="subMainTitle">Book Tickets</h1>
             <div class="hrSubMain"></div>
             <div class ="form">
             <form name="ticketForm"  method='post' action='http://titan.csit.rmit.edu.au/~e54061/wp/form-tester-2.php' onsubmit="return bookMovie()">
-            <div id="movieOpt" >Film Name: </div>
-            <div id="dayOpt">Session Day: </div>
-            <div id="timeOpt">Session Time: </div>
+            <div id="movieOpt"onchange="refreshTicketInfo()">Film Name: </div>
+            <div id="dayOpt" onchange="refreshPrice()">Session Day: </div>
+            <div id="timeOpt" onchange="refreshPrice()">Session Time: </div>
             <br>
-            </div>
-        </div>
-            <div id="tickets"></div>
+            <div id="tickets" onchange="refreshPrice()"></div>
             <div class="movieButton">
             <a class ="movieButtonText" onclick="bookMovie()">Book</a>
-
+        </div>
             <!--div class="inputObject">Film Name:</br><input type="text" name="film"><br> </div>
             <div class="inputObject">Subject:</br><select name="day">
             <option value="Mon">General Enquiry</option>
@@ -58,6 +56,7 @@
         </div>
         </form>
 
+        </div>
     </div>
     <footer>
         <div class="hr"></div>
