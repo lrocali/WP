@@ -31,31 +31,26 @@
             </ul>
         </div>
     </header>
-    <div class="main">
+    <div class="ticketMain">
         <div class="subMain">
             <h1 class="subMainTitle">Book Tickets</h1>
             <div class="hrSubMain"></div>
+            <div class="movieTicketDetail" id="divMovieDetail"></div>
+            <!--<div class="hrMovieDetail"></div>-->
             <div class ="form">
-            <form name="ticketForm"  method='post' action='http://titan.csit.rmit.edu.au/~e54061/wp/form-tester-2.php' onsubmit="return bookMovie()">
-            <div id="movieOpt"onchange="refreshTicketInfo()">Film Name: </div>
-            <div id="dayOpt" onchange="refreshPrice()">Session Day: </div>
-            <div id="timeOpt" onchange="refreshPrice()">Session Time: </div>
+            <form name="ticketForm" id="ticketForm"  method='post' action='http://titan.csit.rmit.edu.au/~e54061/wp/form-tester-2.php' onsubmit="return bookMovie()">
+            <div class="formLabel">Film Name: <div id="movieOpt"onchange="refreshTicketInfo()"></div></div><br>
+            <div class="formLabel">Session Day: <div id="dayOpt" onchange="refreshTime()"></div></div><br>
+            <div class="formLabel">Session Time: <div id="time"></div></div><br>
             <br>
             <div id="tickets" onchange="refreshPrice()"></div>
-            <div class="movieButton">
-            <a class ="movieButtonText" onclick="bookMovie()">Book</a>
-        </div>
-            <!--div class="inputObject">Film Name:</br><input type="text" name="film"><br> </div>
-            <div class="inputObject">Subject:</br><select name="day">
-            <option value="Mon">General Enquiry</option>
-            <option value="Tue">Group and Corporate Bookings</option>
-            <option value="Wedd">Suggestions & Complaints</option>
-            </select></div>
-            <div class="inputObject">Message:</br><textarea name="message" rows="5" cols="50" ></textarea></div>-->
-            <div class="inputObject"><input type="submit" value="submit"> </div>
-        </div>
-        </form>
+            <br>
+            <div class="formLabel">Total Price: <div id="price"></div></div>
+            <br>
+            <div class="inputObject"><input type="submit" value="Book"> </div>
 
+        </form>
+      </div>
         </div>
     </div>
     <footer>

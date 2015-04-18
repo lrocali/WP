@@ -25,7 +25,7 @@ header {
     color: #FF6600;
     text-decoration: none;
     font-size: 50px;
-    
+
 }
 
 .menuBar {
@@ -49,7 +49,7 @@ header {
 
 .menuButtons:hover {
     color:#FF6600;
-    background-color: #666666;   
+    background-color: #666666;
 }
 
 .menuTexts{
@@ -68,15 +68,23 @@ header {
     color:white;
 }
 
-.main {
+.indexMain {
     color: white;
     background-color: #333333;
     width: 1000px ;
-    min-height: 1000px;
+    min-height: 900px;
     margin-left: auto ;
     margin-right: auto ;
 }
 
+.ticketMain {
+    color: white;
+    background-color: #333333;
+    width: 1000px ;
+    min-height: 1500px;
+    margin-left: auto ;
+    margin-right: auto ;
+}
 .contactMain {
     color: white;
     background-color: #333333;
@@ -113,7 +121,7 @@ header {
     list-style: none;
     margin-top:50px;
     margin-bottom: 50px;
-    
+
 }
 .subMain1Text {
     width: 320px;
@@ -153,12 +161,28 @@ header {
     height: 6px;
     background-color: #666666;
 }
+
 .movie {
     width: 450px;
     height: 300px;
     float: left;
     padding: 10px;
     border-color: black;
+}
+
+.movieTicketDetail {
+    width: 930px;
+    height: 400px;
+    float: left;
+    padding: 10px;
+    border-color: black;
+}
+.movieTicketDetailText {
+    width: 600px;
+    height: 360px;
+    float: right;
+    padding: 10px;
+    text-align:center;
 }
 
 .movieImage {
@@ -194,8 +218,8 @@ header {
 
 .movieButton:hover {
     color:#FF6600;
-    background-color: #666666;  
-    color:white; 
+    background-color: #666666;
+    color:white;
 }
 
 .movieButtonText {
@@ -242,4 +266,12 @@ footer {
     padding: 10px;
 }
 
+.formLabel {
+  width:120px;
+  padding:0px;
+  margin:0px;
+}
 
+.ticketTable {
+  padding:10px;
+}
