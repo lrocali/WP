@@ -4,6 +4,7 @@ var movie1 = {
 	genre:"AC",
 	genreName:"Action",
 	days:["Wed, Thu, Fri","Sat, Sun"],
+	dayByDay:["Wed","Thu","Fri","Sat","Sun"],
 	times:["9pm","9pm"],
 	sessions:"",
 	imgName:"images/americanSniper.jpg"
@@ -16,6 +17,7 @@ var movie2 = {
 	genre:"CH",
 	genreName:"Children",
 	days:["Mon, Tue","Wed, Thu, Fri","Sat, Sun"],
+	dayByDay:["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
 	times:["1pm","6pm","12pm"],
 	sessions:"",
 	imgName:"images/home.jpg"
@@ -28,6 +30,7 @@ var movie3 = {
 	genre:"RC",
 	genreName:"Romantic Comedy",
 	days:["Mon, Tue","Wed, Thu, Fri","Sat, Sun"],
+	dayByDay:["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
 	times:["9pm","1pm","6pm"],
 	sessions:"",
 	imgName:"images/youAreMyBoss.jpg"
@@ -40,6 +43,7 @@ var movie4 = {
 	genre:"AF",
 	genreName:"Art/ Foreign Filme",
 	days:["Mon, Tue","Sat, Sun"],
+	dayByDay:["Mon","Tue","Sat","Sun"],
 	times:["6pm","3pm"],
 	sessions:"",
 	imgName:"images/theSoundsOfMusic.jpg"
@@ -308,7 +312,7 @@ function refreshPrice(){
 
 function calculatePrice(day,time,type, quantity){
 	var subPrice = 0;
-	if(day=="Mon, Tue" || (day=="Wed, Thu, Fri" && time=="1pm")) {
+	if((day=="Mon" || day=="Tue") || (day=="Wed"  && time=="1pm") || (day=="Thu" && time=="1pm") || (day=="Fri" && time=="1pm")) {
 		if(type=="SA"){
 			subPrice=quantity*12;
 		}
@@ -416,16 +420,16 @@ function deleteOptions(dayOrTime){
 function getDays(movie){
 	var dayss = [];
 	if (movie == movie1.title) {
-		dayss = movie1.days;
+		dayss = movie1.dayByDay;
 	}
 	else if (movie == movie2.title) {
-		dayss = movie2.days;
+		dayss = movie2.dayByDay;
 	}
 	else if (movie == movie3.title) {
-		dayss = movie3.days;
+		dayss = movie3.dayByDay;
 	}
 	else  if (movie == movie4.title) {
-		dayss = movie4.days;
+		dayss = movie4.dayByDay;
 	}
 	return dayss
 }
@@ -450,44 +454,44 @@ function getMovie(movie){
 function getTime(day,movie){
 	var time = "";
 	if (movie == movie1.title) {
-		if(day==movie1.days[0]){
+		if(day==movie1.dayByDay[0] || day==movie1.dayByDay[1] || day==movie1.dayByDay[2]){
 			time = movie1.times[0];
 		}
-		if(day==movie1.days[1]){
+		if(day==movie1.dayByDay[3] ||day==movie1.dayByDay[4]){
 			time = movie1.times[1];
 		}
 	}
 	else if (movie == movie2.title) {
-		if(day==movie2.days[0]){
+		if(day==movie2.dayByDay[0] || day==movie2.dayByDay[1]){
 			time = movie2.times[0];
 		}
-		if(day==movie2.days[1]){
+		if(day==movie2.dayByDay[2] || day==movie2.dayByDay[3] || day==movie2.dayByDay[4]){
 			time = movie2.times[1];
 		}
-		if(day==movie2.days[2]){
+		if(day==movie2.dayByDay[5] || day==movie2.dayByDay[6]){
 			time = movie2.times[2];
 		}
 	}
 	else if (movie == movie3.title) {
-		if(day==movie3.days[0]){
+		if(day==movie3.dayByDay[0] ||day==movie3.dayByDay[1]){
 			time = movie3.times[0];
 		}
-		if(day==movie3.days[1]){
+		if(day==movie3.dayByDay[2] || day==movie3.dayByDay[3] || day==movie3.dayByDay[4]){
 			time = movie3.times[1];
 		}
-		if(day==movie3.days[2]){
+		if(day==movie3.dayByDay[5] || day==movie3.dayByDay[6]){
 			time = movie3.times[2];
 		}
 	}
 	else  if (movie == movie4.title) {
-		if(day==movie4.days[0]){
+		if(day==movie4.dayByDay[0] || day==movie4.dayByDay[1]){
 			time = movie4.times[0];
 		}
-		if(day==movie4.days[1]){
+		if(day==movie4.dayByDay[2] || day==movie4.dayByDay[3]){
 			time = movie4.times[1];
 		}
 	}
-	return time
+	return time;
 }
 
 function SelectElement(valueToSelect){
