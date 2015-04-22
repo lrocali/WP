@@ -63,6 +63,7 @@ var ticketTypeName = [
 ]
 
 var selectedMovieFromOptions = movie1;
+window.name = movie1.title;
 function getInfo() {
 	document.getElementById("title1").innerHTML = movie1.title;
 	document.getElementById("synopsis1").innerHTML = "Synopsis: " + movie1.synopsis;
