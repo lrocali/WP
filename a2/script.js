@@ -4,7 +4,7 @@ var movie1 = {
 	genre:"AC",
 	genreName:"Action",
 	days:["Wed, Thu, Fri","Sat, Sun"],
-	dayByDay:["Wed","Thu","Fri","Sat","Sun"],
+	dayByDay:["Wednesday","Thursday","Friday","Saturday","Sunday"],
 	times:["9pm","9pm"],
 	sessions:"",
 	imgName:"images/americanSniper.jpg"
@@ -17,7 +17,7 @@ var movie2 = {
 	genre:"CH",
 	genreName:"Children",
 	days:["Mon, Tue","Wed, Thu, Fri","Sat, Sun"],
-	dayByDay:["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
+	dayByDay:["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
 	times:["1pm","6pm","12pm"],
 	sessions:"",
 	imgName:"images/home.jpg"
@@ -30,7 +30,7 @@ var movie3 = {
 	genre:"RC",
 	genreName:"Romantic Comedy",
 	days:["Mon, Tue","Wed, Thu, Fri","Sat, Sun"],
-	dayByDay:["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
+	dayByDay:["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
 	times:["9pm","1pm","6pm"],
 	sessions:"",
 	imgName:"images/youAreMyBoss.jpg"
@@ -43,7 +43,7 @@ var movie4 = {
 	genre:"AF",
 	genreName:"Art/ Foreign Filme",
 	days:["Mon, Tue","Sat, Sun"],
-	dayByDay:["Mon","Tue","Sat","Sun"],
+	dayByDay:["Monday","Tuesday","Saturday","Sunday"],
 	times:["6pm","3pm"],
 	sessions:"",
 	imgName:"images/theSoundsOfMusic.jpg"
@@ -63,7 +63,6 @@ var ticketTypeName = [
 ]
 
 var selectedMovieFromOptions = movie1;
-window.name = movie1.title;
 function getInfo() {
 	document.getElementById("title1").innerHTML = movie1.title;
 	document.getElementById("synopsis1").innerHTML = "Synopsis: " + movie1.synopsis;
@@ -100,28 +99,41 @@ function getSessions(movie){
 }
 
 function bookMovie(){
-	alert("You have booked " + selectedMovieFromOptions);
+	if (document.getElementById("price").innerHTML == "$0.00"){
+		document.getElementById("notickets").hidden = false;
+		return false;
+	}
+	//alert("booked");
+	alert("You have booked " + selectedMovieFromOptions + " for " + document.getElementById("day").value +" at " + document.getElementById("time").value);
+
+	//alert("You have booked " + selectedMovieFromOptions);
+
 }
 
 function selectedMovie(selected){
 	/*window.name based from http://www.boutell.com/newfaq/creating/scriptpass.html*/
 	if (selected == "movie1") {
-		window.name = movie1.title;
+		sessionStorage.setItem("film",movie1.title);
+		/*localStorage.film = "";*/
 	}
 	if (selected == "movie2") {
-		window.name = movie2.title;
+		sessionStorage.setItem("film",movie2.title);
 	}
 	if (selected == "movie3") {
-		window.name = movie3.title;
+		sessionStorage.setItem("film",movie3.title);
 	}
 	if (selected == "movie4") {
-		window.name = movie4.title;
+		sessionStorage.setItem("film",movie4.title);
 	}
 }
 
 function getTicketInfo() {
+
+	if (sessionStorage.getItem("film") == null) {
+		sessionStorage.setItem("film",movie1.title);
+	}
 	var divMvDt = document.getElementById("divMovieDetail");
-	var movieObj = getMovie(window.name);
+	var movieObj = getMovie(sessionStorage.getItem("film"));
 
   var movieImg = document.createElement("img");
   movieImg.src = movieObj.imgName;
@@ -163,11 +175,11 @@ function getTicketInfo() {
 	    option.text = movies[i];
 	    movieOptions.appendChild(option);
 	}
-	SelectElement(window.name);
+	SelectElement(sessionStorage.getItem("film"));
 
 	//create movie session DAY select option
 	var dayOpt = document.getElementById("dayOpt");
-	var days = getDays(window.name);
+	var days = getDays(sessionStorage.getItem("film"));
 
 	var dayOptions = document.createElement("select");
 	dayOptions.id = "day";
@@ -182,15 +194,28 @@ function getTicketInfo() {
 	}
 
 	//create movie session TIME
-	var timeOpt = document.getElementById("time");
-	var time = getTime(days[0],window.name);
+	var timeOpt = document.getElementById("timeOpt");
+	var time = getTime(days[0],sessionStorage.getItem("film"));
 	timeOpt.appendChild(document.createTextNode(time));
+
+	var inputTime = document.createElement("input");
+	inputTime.hidden = true;
+	inputTime.id = "time";
+	inputTime.name = "time";
+	inputTime.value = time;
+	document.getElementById("ticketForm").appendChild(inputTime);
+
 
 	//create label total Price
 	var price = document.getElementById("price");
-	price.appendChild(document.createTextNode("0.00"));
+	price.appendChild(document.createTextNode("$0.00"));
 
-	selectedMovieFromOptions = window.name;
+	var notickets = document.getElementById("notickets");
+	var dv = document.createElement("div");
+	notickets.appendChild(document.createTextNode("You did not select any ticket"));
+	notickets.hidden = true;
+
+	selectedMovieFromOptions = sessionStorage.getItem("film");
 	tableCreate();
 }
 
@@ -254,9 +279,9 @@ function tableCreate(){
 									subTotalPrice.className = IdAndNameSBT;
 									var day = document.getElementById("day");
 									var daySelected = day.options[day.selectedIndex].text;
-									var timeDiv = document.getElementById("time");
+									var timeDiv = document.getElementById("timeOpt");
 									timeSelected = timeDiv.innerHTML;
-									var divText = document.createTextNode(calculatePrice(daySelected,timeSelected,ticketType[i],1));
+									var divText = document.createTextNode("$"+calculatePrice(daySelected,timeSelected,ticketType[i],1));
 									subTotalPrice.appendChild(divText);
 									td.appendChild(subTotalPrice);
 								}
@@ -265,7 +290,7 @@ function tableCreate(){
 									var IdAndNameSBT = "sbt"+ticketType[i];
 									subTotalPrice.id =  IdAndNameSBT;
 									subTotalPrice.className = IdAndNameSBT;
-									var divText = document.createTextNode("0.00");
+									var divText = document.createTextNode("$0.00");
 									subTotalPrice.appendChild(divText);
 									td.appendChild(subTotalPrice);
 								}
@@ -287,21 +312,21 @@ function refreshPrice(){
 		var day = document.getElementById("day");
 		var daySelected = day.options[day.selectedIndex].text;
 
-		var timeDiv = document.getElementById("time");
+		var timeDiv = document.getElementById("timeOpt");
 		timeSelected = timeDiv.innerHTML;
 
 		var subPrice = calculatePrice(daySelected,timeSelected,type.id,quantity);
 		var subPriceFloat = (subPrice).toFixed(2)
-		sbt.innerHTML = subPriceFloat.toString();
+		sbt.innerHTML = "$"+subPriceFloat.toString();
 
 		var individualPrice = calculatePrice(daySelected,timeSelected,type.id,1);
-		ip.innerHTML = individualPrice;
+		ip.innerHTML = "$"+individualPrice;
 		totalPrice = totalPrice + subPrice;
 
 	}
 	var price = document.getElementById("price");
 	var totalPriceFloat = (totalPrice).toFixed(2);
-	price.innerHTML = totalPriceFloat.toString();
+	price.innerHTML = "$"+totalPriceFloat.toString();
 
 	var inputPrice = document.createElement("input");
 	inputPrice.hidden = true;
@@ -309,11 +334,14 @@ function refreshPrice(){
 	inputPrice.value = totalPriceFloat;
 	document.getElementById("ticketForm").appendChild(inputPrice);
 
+	var notickets = document.getElementById("notickets");
+	notickets.hidden = true;
+
 }
 
 function calculatePrice(day,time,type, quantity){
 	var subPrice = 0;
-	if((day=="Mon" || day=="Tue") || (day=="Wed"  && time=="1pm") || (day=="Thu" && time=="1pm") || (day=="Fri" && time=="1pm")) {
+	if((day=="Monday" || day=="Tuesday") || (day=="Wednesday"  && time=="1pm") || (day=="Thursday" && time=="1pm") || (day=="Friday" && time=="1pm")) {
 		if(type=="SA"){
 			subPrice=quantity*12;
 		}
@@ -397,7 +425,7 @@ function refreshTicketInfo(){
 }
 
 function refreshTime(){
-	var timeDiv = document.getElementById("time");
+	var timeDiv = document.getElementById("timeOpt");
 	var day = document.getElementById("day");
 
 	var daySelected = day.options[day.selectedIndex].text;
@@ -406,6 +434,7 @@ function refreshTime(){
 
 	var inputTime = document.createElement("input");
 	inputTime.hidden = true;
+	inputTime.id = "time";
 	inputTime.name = "time";
 	inputTime.value = time;
 	document.getElementById("ticketForm").appendChild(inputTime);
