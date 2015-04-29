@@ -1,8 +1,9 @@
 var movie1 = {
 	title:"American Sniper",
-	synopsis:"From director Clint Eastwood comes 'American Sniper,' starring Bradley Cooper as Chris Kyle, the most lethal sniper in U.S. military history. But there was much more to him than his skill as a sharpshooter.",
+	synopsis:"From director Clint Eastwood comes 'American Sniper,' starring Bradley Cooper as Chris Kyle, the most lethal sniper in U.S. military history.",
 	genre:"AC",
 	genreName:"Action",
+	age:"MA 15+",
 	days:["Wed, Thu, Fri","Sat, Sun"],
 	dayByDay:["Wednesday","Thursday","Friday","Saturday","Sunday"],
 	times:["9pm","9pm"],
@@ -13,9 +14,10 @@ var movie1 = {
 
 var movie2 = {
 	title:"Home",
-	synopsis:"After an alien race invades Earth to escape their enemies, an alien accidentally reveals their location and must go on the run with a teenage human girl to save the planet.",
+	synopsis:"After an alien race invades Earth to escape their enemies, an alien accidentally reveals their location and must go on the run to save the planet.",
 	genre:"CH",
 	genreName:"Children",
+	age:"G",
 	days:["Mon, Tue","Wed, Thu, Fri","Sat, Sun"],
 	dayByDay:["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
 	times:["1pm","6pm","12pm"],
@@ -29,6 +31,7 @@ var movie3 = {
 	synopsis:"Pong (Coco Martin) is an executive assistant in an airline company where Georgina Lorenzana (Toni Gonzaga) is an assistant vice presiden.",
 	genre:"RC",
 	genreName:"Romantic Comedy",
+	age:"PG",
 	days:["Mon, Tue","Wed, Thu, Fri","Sat, Sun"],
 	dayByDay:["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
 	times:["9pm","1pm","6pm"],
@@ -42,6 +45,7 @@ var movie4 = {
 	synopsis:"A woman leaves an Austrian convent to become a governess to the children of a Naval officer widower.",
 	genre:"AF",
 	genreName:"Art/ Foreign Filme",
+	age:"G",
 	days:["Mon, Tue","Sat, Sun"],
 	dayByDay:["Monday","Tuesday","Saturday","Sunday"],
 	times:["6pm","3pm"],
@@ -52,48 +56,162 @@ var movie4 = {
 
 var ticketType = ["SA","SP","SC","FA","FC","B1","B2","B3"]
 var ticketTypeName = [
-	"Adult",
-	"Concession",
-	"Child",
-	"First Class Adult",
-	"First Class Child",
+	"Standart - Adult",
+	"Standart - Concession",
+	"Standart - Child",
+	"First Class - Adult",
+	"First Class - Child",
 	"Beanbag - 1 Person",
 	"Beanbag - 2 People",
 	"Beanbag - 3 children"
 ]
 
+var ticketTypeNamee = [
+	"Standart - Adult",
+	"Standart - Concession",
+	"Standart - Child",
+	"First Class - Adult",
+	"First Class - Child",
+	"Beanbag"
+]
+
+var ticketType1Price = [
+	"12",
+	"10",
+	"8",
+	"25",
+	"20",
+	"20"
+]
+
+var ticketType2Price = [
+	"18",
+	"15",
+	"12",
+	"30",
+	"25",
+	"30"
+]
+
+var ticketMonTue = [
+	"1pm - Childrens",
+	"6pm - Art / Foreign",
+	"9pm - Romantic Comedy",
+	" "
+]
+
+var ticketWedFri = [
+	"1pm - Romantic Comedy",
+	"6pm - Childrens",
+	"9pm - Action ",
+	" "
+]
+
+var ticketSatSun = [
+	"12pm - Childrens",
+	"3pm - Art / Foreign",
+	"6pm - Romantic Comedy",
+	"9pm - Action "
+]
+
+var mvdetails1 = 0, mvdetails2 = 0, mvdetails3 = 0, mvdetails4 = 0;
+
 var selectedMovieFromOptions = movie1;
 function getInfo() {
+
+	getMovie1Details();
+	getMovie2Details();
+	getMovie3Details();
+	getMovie4Details();
+}
+
+function getMovie1Details() {
+if(mvdetails1 == 0){
+	document.getElementById("title1").innerHTML = movie1.title;
+	document.getElementById("synopsis1").innerHTML = "Synopsis: " + movie1.synopsis;
+	document.getElementById("genre1").innerHTML = "";
+	document.getElementById("ageRating1").innerHTML ="";
+	document.getElementById("time1").innerHTML = "";
+		mvdetails1 = 1
+
+}
+else {
 	document.getElementById("title1").innerHTML = movie1.title;
 	document.getElementById("synopsis1").innerHTML = "Synopsis: " + movie1.synopsis;
 	document.getElementById("genre1").innerHTML = "Genre: " + movie1.genreName;
+	document.getElementById("ageRating1").innerHTML = "Movie rating: " + movie1.age;
 	movie1.sessions = getSessions(movie1);
 	document.getElementById("time1").innerHTML = movie1.sessions;
+	mvdetails1 = 0;
+}
+}
+function getMovie2Details() {
+	if(mvdetails2 == 0){
+		document.getElementById("title2").innerHTML = movie2.title;
+		document.getElementById("synopsis2").innerHTML = "Synopsis: " + movie2.synopsis;
+		document.getElementById("genre2").innerHTML = "";
+		document.getElementById("ageRating2").innerHTML ="";
+		document.getElementById("time2").innerHTML = "";
+			mvdetails2 = 1
 
-	document.getElementById("title2").innerHTML = movie2.title;
-	document.getElementById("synopsis2").innerHTML = "Synopsis: " + movie2.synopsis;
-	document.getElementById("genre2").innerHTML = "Genre: " + movie2.genreName;
-	movie2.sessions = getSessions(movie2);
-	document.getElementById("time2").innerHTML = movie2.sessions;
+	}
+	else {
+		document.getElementById("title2").innerHTML = movie2.title;
+		document.getElementById("synopsis2").innerHTML = "Synopsis: " + movie2.synopsis;
+		document.getElementById("genre2").innerHTML = "Genre: " + movie2.genreName;
+		document.getElementById("ageRating2").innerHTML = "Movie rating: " + movie2.age;
+		movie2.sessions = getSessions(movie2);
+		document.getElementById("time2").innerHTML = movie2.sessions;
+		mvdetails2 = 0;
+	}
+}
+function getMovie3Details() {
+	if(mvdetails3 == 0){
+		document.getElementById("title3").innerHTML = movie3.title;
+		document.getElementById("synopsis3").innerHTML = "Synopsis: " + movie3.synopsis;
+		document.getElementById("genre3").innerHTML = "";
+		document.getElementById("ageRating3").innerHTML ="";
+		document.getElementById("time3").innerHTML = "";
+			mvdetails3 = 1
 
-	document.getElementById("title3").innerHTML = movie3.title;
-	document.getElementById("synopsis3").innerHTML = "Synopsis: " + movie3.synopsis;
-	document.getElementById("genre3").innerHTML = "Genre: " + movie3.genreName;
-	movie3.sessions = getSessions(movie3);
-	document.getElementById("time3").innerHTML = movie3.sessions;
+	}
+	else {
+		document.getElementById("title3").innerHTML = movie3.title;
+		document.getElementById("synopsis3").innerHTML = "Synopsis: " + movie3.synopsis;
+		document.getElementById("genre3").innerHTML = "Genre: " + movie3.genreName;
+		document.getElementById("ageRating3").innerHTML = "Movie rating: " + movie3.age;
+		movie3.sessions = getSessions(movie3);
+		document.getElementById("time3").innerHTML = movie3.sessions;
+		mvdetails3 = 0;
+	}
 
-	document.getElementById("title4").innerHTML = movie4.title;
-	document.getElementById("synopsis4").innerHTML = "Synopsis: " + movie4.synopsis;
-	document.getElementById("genre4").innerHTML = "Genre: " + movie4.genreName;
-	movie4.sessions = getSessions(movie4);
-	document.getElementById("time4").innerHTML = movie4.sessions;
+}
+function getMovie4Details() {
+	if(mvdetails4 == 0){
+		document.getElementById("title4").innerHTML = movie4.title;
+		document.getElementById("synopsis4").innerHTML = "Synopsis: " + movie4.synopsis;
+		document.getElementById("genre4").innerHTML = "";
+		document.getElementById("ageRating4").innerHTML ="";
+		document.getElementById("time4").innerHTML = "";
+			mvdetails4 = 1
+
+	}
+	else {
+		document.getElementById("title4").innerHTML = movie4.title;
+		document.getElementById("synopsis4").innerHTML = "Synopsis: " + movie4.synopsis;
+		document.getElementById("genre4").innerHTML = "Genre: " + movie4.genreName;
+		document.getElementById("ageRating4").innerHTML = "Movie rating: " + movie4.age;
+		movie4.sessions = getSessions(movie4);
+		document.getElementById("time4").innerHTML = movie4.sessions;
+		mvdetails4 = 0;
+	}
 }
 
 function getSessions(movie){
 	var sessions = "";
 	for (var i = 0; i <= movie.days.length-1; i++) {
 		sessions = sessions + movie.days[i] + " - " + movie.times[i];
-		sessions = sessions + "  |  ";
+		sessions = sessions + " | ";
 	}
 	return sessions;
 }
@@ -127,6 +245,11 @@ function selectedMovie(selected){
 	}
 }
 
+function getPriceAndSchedule() {
+	tablePricesCreate();
+	tableScheduleCreate();
+}
+
 function getTicketInfo() {
 
 	if (sessionStorage.getItem("film") == null) {
@@ -138,6 +261,7 @@ function getTicketInfo() {
   var movieImg = document.createElement("img");
   movieImg.src = movieObj.imgName;
 	movieImg.id = "movieImg";
+	movieImg.className = "movieImgDetail"
   divMvDt.appendChild(movieImg);
 
 	var dtDiv = document.createElement("div");
@@ -156,9 +280,19 @@ function getTicketInfo() {
 	dtDiv.appendChild(movieSynopsis);
 
 	var movieGenreName = document.createElement("p");
-	movieGenreName.innerHTML = "Genre Name: " + movieObj.genreName;
+	movieGenreName.innerHTML = "Genre Name: " + movieObj.genreName + "<br><br>";
 	movieGenreName.id = "movieGenreName";
 	dtDiv.appendChild(movieGenreName);
+
+	var movieAge = document.createElement("p");
+	movieAge.innerHTML = "Movie Rating: " + movieObj.age + "<br><br>";
+	movieAge.id = "movieAge";
+	dtDiv.appendChild(movieAge);
+
+	var movieSessions = document.createElement("p");
+	movieSessions.innerHTML = "Movie Sessions: " + getSessions(movieObj) + "<br><br>";
+	movieSessions.id = "movieSessions";
+	dtDiv.appendChild(movieSessions);
 
 	//create movie NAME select option
 	var movieOpt = document.getElementById("movieOpt");
@@ -219,13 +353,114 @@ function getTicketInfo() {
 	tableCreate();
 }
 
+function tableScheduleCreate(){
+    var tickets = document.getElementById("weeklySchedule"),
+        tbl  = document.createElement('table');
+				tbl.className = "table"
+    //tbl.style.border = "1px solid white";
+
+		var tr = tbl.insertRow();
+
+		var td1 = tr.insertCell();
+		var td2 = tr.insertCell();
+		var td3 = tr.insertCell();
+
+		td1.appendChild(document.createTextNode("Mon - Tue"));
+		td2.appendChild(document.createTextNode("Wed-Fri"));
+		td3.appendChild(document.createTextNode("Sat - Sun"));
+
+		td1.style.border = "1px solid white";
+		td2.style.border = "1px solid white";
+		td3.style.border = "1px solid white";
+
+		td1.className = "ticketTable";
+		td2.className = "ticketTable";
+		td3.className = "ticketTable";
+
+		for(var i = 0; i < 4; i++){
+        var tr = tbl.insertRow();
+
+				//CELL
+        for(var j = 0; j < 3; j++){
+                var td = tr.insertCell();
+								if(j==0){
+									td.appendChild(document.createTextNode(ticketMonTue[i]));
+								}
+								if (j==1){
+
+										td.appendChild(document.createTextNode(ticketWedFri[i]));
+								}
+								if (j==2) {
+									/*var divText = document.createTextNode("$");
+									subTotalPrice.appendChild(divText);*/
+									td.appendChild(document.createTextNode(ticketSatSun[i]));
+								}
+								td.className = "ticketTable"
+                td.style.border = "1px solid white";
+
+        }
+    }
+    tickets.appendChild(tbl);
+}
+
+function tablePricesCreate(){
+    var tickets = document.getElementById("pricesAndSchedule"),
+        tbl  = document.createElement('table');
+				tbl.className = "table"
+    //tbl.style.border = "1px solid white";
+
+		var tr = tbl.insertRow();
+
+		var td1 = tr.insertCell();
+		var td2 = tr.insertCell();
+		var td3 = tr.insertCell();
+
+		td1.appendChild(document.createTextNode("Price List"));
+		td2.appendChild(document.createTextNode("Mon - Tue (All Day) / Mon - Fri (1pm only)"));
+		td3.appendChild(document.createTextNode("Wed - Fri (not 1pm) / Sat - Sun (All Day)"));
+
+		td1.style.border = "1px solid white";
+		td2.style.border = "1px solid white";
+		td3.style.border = "1px solid white";
+
+		td1.className = "ticketTable";
+		td2.className = "ticketTable";
+		td3.className = "ticketTable";
+
+		for(var i = 0; i < 6; i++){
+        var tr = tbl.insertRow();
+
+				//CELL
+        for(var j = 0; j < 3; j++){
+                var td = tr.insertCell();
+								if(j==0){
+									td.appendChild(document.createTextNode(ticketTypeNamee[i]));
+								}
+								if (j==1){
+
+										td.appendChild(document.createTextNode(ticketType1Price[i]));
+								}
+								if (j==2) {
+									/*var divText = document.createTextNode("$");
+									subTotalPrice.appendChild(divText);*/
+									td.appendChild(document.createTextNode(ticketType2Price[i]));
+								}
+								td.className = "ticketTable"
+                td.style.border = "1px solid white";
+
+        }
+    }
+    tickets.appendChild(tbl);
+}
+
 function tableCreate(){
     var tickets = document.getElementById("tickets"),
         tbl  = document.createElement('table');
-    tbl.style.width  = '800px';
-    tbl.style.border = "1px solid white";
+				tbl.className = "table"
+
 
 		var tr = tbl.insertRow();
+
 		var td1 = tr.insertCell();
 		var td2 = tr.insertCell();
 		var td3 = tr.insertCell();

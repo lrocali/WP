@@ -7,19 +7,21 @@ header {
     background-color:#333333;
 }
 
-.logoArea {
-    margin-left: auto ;
-    margin-right: auto ;
-    padding: 15px;
-    width: 1000px;
-    text-align: center;
-    text-decoration: none;
-}
-
 .logoImage {
     width: 40px;
     height: 40px;
 }
+
+
+  .logoArea {
+      margin-left: auto ;
+      margin-right: auto ;
+      padding: 15px;
+      width: 1000px;
+      text-align: center;
+      text-decoration: none;
+  }
+
 
 .logoText{
     color: #FF6600;
@@ -128,7 +130,7 @@ header {
     float:left;
     padding: 20px;
     text-align: center;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .subMain2Text {
@@ -174,7 +176,6 @@ header {
     width: 930px;
     height: 400px;
     float: left;
-    padding: 10px;
     border-color: black;
 }
 .movieTicketDetailText {
@@ -208,22 +209,23 @@ header {
 }
 .movieButton {
     list-style: none;
-    width: 100px;
-    background-color: #FF6600;
-    margin-left: auto;
-    margin-right: auto;
+    width: 240px;
+    float:left;
     margin-top: 5px;
     margin-bottom: 5px;
 }
 
-.movieButton:hover {
+.movieButtonText:hover {
     color:#FF6600;
+    widht:100px;
+    height:20px;
     background-color: #666666;
     color:white;
 }
 
 .movieButtonText {
     color:black;
+    background-color: #FF6600;
     font-size: 14px;
     text-decoration: none;
     text-transform: uppercase;
@@ -237,7 +239,7 @@ header {
 }
 
 .form {
-    padding: 20px;
+    padding: 0px;
 }
 
 footer {
@@ -266,6 +268,9 @@ footer {
     padding: 10px;
 }
 
+.tablePrices {
+  color: white;
+}
 .formLabel {
   width:120px;
   padding:0px;
@@ -274,4 +279,99 @@ footer {
 
 .ticketTable {
   padding:10px;
+  color: white;
+}
+.table {
+  width: 950px;
+  border :1px solid white;
+}
+@media (max-width:800px){
+
+    .logoArea {
+        margin-left: auto ;
+        margin-right: auto ;
+        padding: 15px;
+        width: 500px;
+        text-align: center;
+        text-decoration: none;
+    }
+
+
+  .logoText{
+      color: #FF6600;
+      text-decoration: none;
+      font-size: 50px;
+
+  }
+
+  .menuBar {
+      margin-bottom: 0;
+      width: 500px;
+      margin-left: auto ;
+      margin-right: auto ;
+      list-style: none;
+      overflow: hidden;
+      text-align: center;
+      padding: 0;
+  }
+  .indexMain {
+      color: white;
+      background-color: #333333;
+      width: 500px;
+      min-height: 1500px;
+      margin-left: auto ;
+      margin-right: auto ;
+  }
+  .subMain {
+      width:450px;
+      min-height: 1000px;
+      margin:0;
+      float:left;
+      padding:25px;
+
+  }
+  .ticketMain {
+      color: white;
+      background-color: #333333;
+      width: 500px ;
+      min-height: 1300px;
+      margin-left: auto ;
+      margin-right: auto ;
+      font-size: 14px;
+  }
+  .contactMain {
+      color: white;
+      background-color: #333333;
+      width: 500px ;
+      min-height: 500px;
+      margin-left: auto ;
+      margin-right: auto ;
+  }
+  .movieTicketDetail {
+      width: 430px;
+      height: 300px;
+      float: left;
+      border-color: black;
+  }
+  .movieTicketDetailText {
+      width: 220px;
+      height: 260px;
+      float: right;
+      text-align:center;
+  }
+
+  .movieImgDetail {
+    width: 180px;
+    height: 280px;
+  }
+  .form {
+      padding: 10px;
+      width: 430px;
+      height: 280px;
+  }
+
+  .table {
+    width: 450px;
+    border :1px solid white;
+  }
 }
