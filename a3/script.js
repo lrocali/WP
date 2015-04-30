@@ -1,3 +1,29 @@
+/*var jsonString ={
+	"FO":{
+		"title":"Mardaani",
+		"poster":"\/\/titan.csit.rmit.edu.au\/~e54061\/wp\/movie-service\/FO.jpg",
+		"trailer":"\/\/titan.csit.rmit.edu.au\/~e54061\/wp\/movie-service\/FO.mp4",
+		"rating":"\/\/www.classification.gov.au\/Guidelines\/PublishingImages\/image4.jpeg",
+		"summary":"Every War is Personal",
+		"description":["Shivani Shivaji Roy is an astute cop working in a Mumbai Crime Branch unit. Deft at picking up hidden clues and fearless in confronting hardened criminals, Shivani stumbles into the world of debauchery, cruel desires and exploitation and onto a case that will change her life forever.","A teenage girl is kidnapped by the child trafficking mafia and smuggled outside the city. Shivani embarks on an obsessive hunt for the girl and what follows is a cat and mouse game between a fearless cop and a ruthless mafia kingpin.",
+		"Starring Rani Mukerji in the lead, playing the role of a cop for the first time, this raw and gritty film will be a distinct departure from Pradeep Sarkar’s style of filmmaking."],
+		"sessions":{"Monday":"6pm","Tuesday":"6pm","Saturday":"3pm","Sunday":"3pm"}
+		},
+	"CH":{
+		"title":"Planes: Fire and Rescue",
+		"poster":"\/\/titan.csit.rmit.edu.au\/~e54061\/wp\/movie-service\/CH.jpg",
+		"trailer":"\/\/titan.csit.rmit.edu.au\/~e54061\/wp\/movie-service\/CH.mp4",
+		"rating":"\/\/www.classification.gov.au\/Guidelines\/PublishingImages\/image1.jpeg",
+		"summary":"Cars with Wings","description":["Planes: Fire & Rescue is a new comedy-adventure about second chances, featuring a dynamic crew of elite racing cars equipped with wings and now operating as firefighting aircraft devoted to protecting historic Piston Peak National Park from raging wildfire. When world famous car racer Lightning McQueen, now known as \"Dusty\" (voice of Dane Cook) learns that his engine is damaged and he may never race again, he must shift gears and is launched into the world of aerial firefighting.",
+		"Dusty joins forces with veteran fire and rescue helicopter Blade Ranger and his courageous team, including spirited super scooper Dipper (voice of Julie Bowen), heavy-lift helicopter Windlifter, ex-military transport Cabbie and a lively bunch of brave all-terrain vehicles known as The Smokejumpers. Together, the fearless team battles a massive wildfire and Dusty learns what it takes to become a true hero."],
+		"sessions":{"Monday":"1pm","Tuesday":"1pm","Wednesday":"6pm","Thursday":"6pm","Friday":"6pm","Saturday":"12pm","Sunday":"12pm"}
+		},
+		"RC":{
+			"title":"Once a Princess",
+			"poster":"\/\/titan.csit.rmit.edu.au\/~e54061\/wp\/movie-service\/RC.jpg",
+			"trailer":"\/\/titan.csit.rmit.edu.au\/~e54061\/wp\/movie-service\/RC.mp4","rating":"\/\/www.classification.gov.au\/Guidelines\/PublishingImages\/image3.jpeg","summary":"Always a Princess","description":["A beautiful, rich and princess-like girl \"unexpectedly\" falls for two guys, someone who ticks all the right boxes class-wise and this other guy who seems quite nice, but who is deemed unsuitable by her family. If you’ve seen the Pillow Book or The Great Gatsby, you can guess which one she picks ...","Several years later, the one she thought would be right turns out to be a bad person (nooooo!). Quite by chance she meets the other guy who is now a successful mobile app developer and perhaps now worthy of her parents’ approval. Although it takes her the rest of the movie, the princess dumps the bad one, goes out with the good one and finds true happiness. Until the sequel due out next year (fingers crossed)."],"sessions":{"Monday":"9pm","Tuesday":"9pm","Wednesday":"1pm","Thursday":"1pm","Friday":"1pm","Saturday":"6pm","Sunday":"6pm"}},"AC":{"title":"Guardians of the Galaxy","poster":"\/\/titan.csit.rmit.edu.au\/~e54061\/wp\/movie-service\/AC.jpg","trailer":"\/\/titan.csit.rmit.edu.au\/~e54061\/wp\/movie-service\/AC.mp4","rating":"\/\/www.classification.gov.au\/Guidelines\/PublishingImages\/image3.jpeg","summary":"Not the Avengers","description":["From Marvel, the studio that brought you the global blockbuster franchises of Iron Man, Thor, Captain America and The Avengers, comes a new team - the Guardians of the Galaxy that take over when The Avengers go on vacation.","An action-packed, epic space adventure, where brash adventurer Peter Quill finds himself the object of an unrelenting bounty hunt after stealing a mysterious orb coveted by Ronan, a powerful villain with ambitions that threaten the entire universe, taking over from Loki whilst he is off on vacation too.","To evade the ever-persistent Ronan, Quill is forced into an uneasy truce with a quartet of disparate misfits - Rocket, a gun-toting raccoon, Groot, a tree-like humanoid, the deadly and enigmatic Gamora and the revenge-driven Drax the Destroyer. But when Quill discovers the true power of the orb and the menace it poses to the cosmos, he must do his best to rally his ragtag rivals for a last, desperate stand with the galaxy’s fate in the balance whilst waiting for a postcard from his Avenger pals that never comes ..."],"sessions":{"Wednesday":"9pm","Thursday":"9pm","Friday":"9pm","Saturday":"9pm","Sunday":"9pm"}}}
+*/
+var jsonString = "\/\/saturn.csit.rmit.edu.au\/~e54061\/wp\/movie-service.php?movie=FO"
 var movie1 = {
 	title:"American Sniper",
 	synopsis:"From director Clint Eastwood comes 'American Sniper,' starring Bradley Cooper as Chris Kyle, the most lethal sniper in U.S. military history.",
@@ -114,21 +140,124 @@ var ticketSatSun = [
 	"9pm - Action "
 ]
 
-var mvdetails1 = 0, mvdetails2 = 0, mvdetails3 = 0, mvdetails4 = 0;
+var mvDetails1 = 0, mvDetails2 = 0, mvDetails3 = 0, mvDetails4 = 0;
+var data;
 
 var selectedMovieFromOptions = movie1;
 function getInfo() {
-
-	getMovie1Details();
+	console.log("getDetails");
+	//getMovie1Details();
+	getMovieDetails("AC");
+	getMovieDetails("FO");
+	getMovieDetails("RC");
+	getMovieDetails("CH");
+	/*
 	getMovie2Details();
 	getMovie3Details();
-	getMovie4Details();
+	getMovie4Details();*/
 }
 
+function getJSON(){
+	$.ajax({
+    type: "POST",
+    url: "https://saturn.csit.rmit.edu.au/~e54061/wp/movie-service.php",
+    dataType: "json",
+    success: function (result) {
+        console.log(result); //Now a JSON object
+				data = result;
+				console.log(data.AC.title);
+				getInfo();
+    }
+	});
+	//console.log(data.AC.title);
+}
+function getMovieDetails(strType){
+	var divMvDt = document.getElementById("div"+strType);
+	var objType = getObjType(strType);
+	//console.log(strType);
+	//console.log(objType);
+
+	var movieImg = document.createElement("img");
+  movieImg.src = objType.poster;
+	//movieImg.id = strType+"img";
+	movieImg.className = "movieImage"
+  divMvDt.appendChild(movieImg);
+
+	var dtDiv = document.createElement("div");
+	dtDiv.className = "movieDetail";
+	//dtDiv.id = "dtDiv";
+	divMvDt.appendChild(dtDiv);
+
+	var movieTitle = document.createElement("h1");
+	movieTitle.innerHTML = objType.title;
+	//movieTitle.id = "movieTitle";
+	dtDiv.appendChild(movieTitle);
+
+	var movieSynopsis = document.createElement("p");
+	movieSynopsis.innerHTML = objType.description[0] + "<br>";
+	//movieSynopsis.id = "movieSynopsis";
+	dtDiv.appendChild(movieSynopsis);
+
+/*
+  var movieImg = document.createElement("img");
+  movieImg.src = movieObj.imgName;
+	movieImg.id = "movieImg";
+	movieImg.className = "movieImgDetail"
+  divMvDt.appendChild(movieImg);
+
+	var dtDiv = document.createElement("div");
+	dtDiv.className = "movieTicketDetailText";
+	dtDiv.id = "dtDiv";
+	divMvDt.appendChild(dtDiv);
+
+	var movieTitle = document.createElement("h1");
+	movieTitle.innerHTML = movieObj.title;
+	movieTitle.id = "movieTitle";
+	dtDiv.appendChild(movieTitle);
+
+	var movieSynopsis = document.createElement("p");
+	movieSynopsis.innerHTML = "Synopsis: " + movieObj.synopsis + "<br><br>";
+	movieSynopsis.id = "movieSynopsis";
+	dtDiv.appendChild(movieSynopsis);
+
+	var movieGenreName = document.createElement("p");
+	movieGenreName.innerHTML = "Genre Name: " + movieObj.genreName + "<br><br>";
+	movieGenreName.id = "movieGenreName";
+	dtDiv.appendChild(movieGenreName);
+
+	var movieAge = document.createElement("p");
+	movieAge.innerHTML = "Movie Rating: " + movieObj.age + "<br><br>";
+	movieAge.id = "movieAge";
+	dtDiv.appendChild(movieAge);
+
+	var movieSessions = document.createElement("p");
+	movieSessions.innerHTML = "Movie Sessions: " + getSessions(movieObj) + "<br><br>";
+	movieSessions.id = "movieSessions";
+	dtDiv.appendChild(movieSessions);
+*/
+}
+
+function getObjType(strType){
+	var objType;
+	if (strType == "AC") {
+		objType = data.AC;
+	}
+	else if (strType == "FO") {
+		objType = data.FO;
+	}
+	else if (strType == "RC") {
+		objType = data.RC;
+	}
+	else  if (strType == "CH") {
+		objType = data.CH;
+	}
+	return objType;
+}
+/*
 function getMovie1Details() {
 if(mvdetails1 == 0){
-	document.getElementById("title1").innerHTML = movie1.title;
-	document.getElementById("synopsis1").innerHTML = "Synopsis: " + movie1.synopsis;
+	document.getElementById("title1").innerHTML = data.AC.title;
+	document.getElementById("synopsis1").innerHTML = data.AC.description[0];
 	document.getElementById("genre1").innerHTML = "";
 	document.getElementById("ageRating1").innerHTML ="";
 	document.getElementById("time1").innerHTML = "";
@@ -136,9 +265,9 @@ if(mvdetails1 == 0){
 
 }
 else {
-	document.getElementById("title1").innerHTML = movie1.title;
-	document.getElementById("synopsis1").innerHTML = "Synopsis: " + movie1.synopsis;
-	document.getElementById("genre1").innerHTML = "Genre: " + movie1.genreName;
+	document.getElementById("title1").innerHTML = data.AC.title;
+	document.getElementById("synopsis1").innerHTML = data.AC.description[0];
+	document.getElementById("genre1").innerHTML = data.AC;
 	document.getElementById("ageRating1").innerHTML = "Movie rating: " + movie1.age;
 	movie1.sessions = getSessions(movie1);
 	document.getElementById("time1").innerHTML = movie1.sessions;
@@ -206,7 +335,7 @@ function getMovie4Details() {
 		mvdetails4 = 0;
 	}
 }
-
+*/
 function getSessions(movie){
 	var sessions = "";
 	for (var i = 0; i <= movie.days.length-1; i++) {
@@ -230,6 +359,7 @@ function bookMovie(){
 
 function selectedMovie(selected){
 	/*window.name based from http://www.boutell.com/newfaq/creating/scriptpass.html*/
+	console.log(data.FO.title);
 	if (selected == "movie1") {
 		sessionStorage.setItem("film",movie1.title);
 		/*localStorage.film = "";*/
@@ -763,3 +893,18 @@ function SelectElement(valueToSelect){
     var element = document.getElementById('film');
     element.value = valueToSelect;
 }
+
+/*/*<img class="movieImage"
+src="images/americanSniper.jpg" alt="AmericanSniper" />
+<div class = "movieDetail">
+		<h1 id="title1"></h1>
+		<p id="synopsis1"></p>
+		<p id="genre1"></p>
+		<p id="ageRating1"></p>
+		<p id="time1"></p>
+		<div class="movieButton">
+		<a class ="movieButtonText" href="index.php?page=ticket" id="movie1" onclick="selectedMovie(id)">Book</a>
+		<a class ="movieButtonText" id="movie1Detail" onclick="getMovie1Details();">Details</a>
+		</div>
+</div>
+<div class="hrMovie"></div>*/
