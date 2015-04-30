@@ -1,0 +1,374 @@
+body {
+    font-family: Futura,"Trebuchet MS",Arial,sans-serif;
+    margin: 0;
+    background-color: #666666;
+}
+header {
+    background-color:#333333;
+}
+
+.logoImage {
+    width: 40px;
+    height: 40px;
+}
+
+
+  .logoArea {
+      margin-left: auto ;
+      margin-right: auto ;
+      padding: 15px;
+      width: 1000px;
+      text-align: center;
+      text-decoration: none;
+  }
+
+
+.logoText{
+    color: #FF6600;
+    text-decoration: none;
+    font-size: 50px;
+
+}
+
+.menuBar {
+    margin-bottom: 0;
+    width: 1000px;
+    margin-left: auto ;
+    margin-right: auto ;
+    list-style: none;
+    overflow: hidden;
+    text-align: center;
+    padding: 0;
+}
+
+.menuButtons {
+    float: left;
+    list-style: none;
+    width: 200px;
+    background-color: #FF6600;
+    padding: 25px;
+}
+
+.menuButtons:hover {
+    color:#FF6600;
+    background-color: #666666;
+}
+
+.menuTexts{
+    color:black;
+    font-size: 25px;
+    line-height: 24px;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.menuTexts:hover{
+    color:white;
+}
+
+.indexMain {
+    color: white;
+    background-color: #333333;
+    width: 1000px ;
+    min-height: 900px;
+    margin-left: auto ;
+    margin-right: auto ;
+}
+
+.ticketMain {
+    color: white;
+    background-color: #333333;
+    width: 1000px ;
+    min-height: 1500px;
+    margin-left: auto ;
+    margin-right: auto ;
+}
+.contactMain {
+    color: white;
+    background-color: #333333;
+    width: 1000px ;
+    min-height: 500px;
+    margin-left: auto ;
+    margin-right: auto ;
+}
+
+
+.subMain {
+    width:950px;
+    max-height: 1000px;
+    margin:0;
+    float:left;
+    padding:25px;
+
+}
+
+.subMainTitle{
+    text-align: center;
+    background-color: #666666;
+    padding: 10px;
+    margin: 0;
+
+}
+
+.subMain p{
+    text-align: center;
+    margin: 0;
+
+}
+.subMain ul{
+    list-style: none;
+    margin-top:50px;
+    margin-bottom: 50px;
+
+}
+.subMain1Text {
+    width: 320px;
+    float:left;
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.subMain2Text {
+    width: 800px;
+    font-size: 30px;
+    padding:20px;
+}
+
+.subMain1Image {
+    height: 100px;
+    margin-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.subMain2Image {
+    margin-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.hrSubMain {
+    height: 6px;
+    background-color: #FF6600;
+    margin-bottom: 10px;
+}
+
+.hrMovie{
+    height: 6px;
+    background-color: #666666;
+}
+
+.movie {
+    width: 450px;
+    height: 300px;
+    float: left;
+    padding: 10px;
+    border-color: black;
+}
+
+.movieTicketDetail {
+    width: 930px;
+    height: 400px;
+    float: left;
+    border-color: black;
+}
+.movieTicketDetailText {
+    width: 600px;
+    height: 360px;
+    float: right;
+    padding: 10px;
+    text-align:center;
+}
+
+.movieImage {
+    width: 200px;
+    height: 300px;
+}
+
+.movieDetail {
+    float: right;
+    width:240px;
+    height:300px;
+}
+
+.movieDetail h1{
+    font-size: 18px;
+    text-align: center;
+
+}
+.movieDetail p{
+    font-size: 14px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.movieButton {
+    list-style: none;
+    width: 240px;
+    float:left;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.movieButtonText:hover {
+    color:#FF6600;
+    widht:100px;
+    height:20px;
+    background-color: #666666;
+    color:white;
+}
+
+.movieButtonText {
+    color:black;
+    background-color: #FF6600;
+    font-size: 14px;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.movieButtonText:hover{
+    color:white;
+}
+
+
+footer {
+    margin-left: auto;
+    margin-right: auto;
+}
+.footerArea {
+    padding: 20px;
+    font-size: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.footerValidator {
+    border:0;
+    height:25px;
+}
+
+.hr {
+    height: 3px;
+    background-color: #FF6600;
+}
+
+.inputObject {
+    padding: 10px;
+}
+
+.tablePrices {
+  color: white;
+}
+.formLabel {
+  width:120px;
+  padding:0px;
+  margin:0px;
+}
+
+.ticketTable {
+  padding:10px;
+  color: white;
+}
+.table {
+  width: 950px;
+  border :1px solid white;
+}
+@media (max-width:800px){
+
+    .logoArea {
+        margin-left: auto ;
+        margin-right: auto ;
+        padding: 15px;
+        width: 500px;
+        text-align: center;
+        text-decoration: none;
+    }
+
+
+  .logoText{
+      color: #FF6600;
+      text-decoration: none;
+      font-size: 50px;
+
+  }
+
+  .menuBar {
+      margin-bottom: 0;
+      width: 500px;
+      margin-left: auto ;
+      margin-right: auto ;
+      list-style: none;
+      overflow: hidden;
+      text-align: center;
+      padding: 0;
+  }
+  .indexMain {
+      color: white;
+      background-color: #333333;
+      width: 500px;
+      min-height: 1500px;
+      margin-left: auto ;
+      margin-right: auto ;
+  }
+  .subMain {
+      width:450px;
+      min-height: 1000px;
+      margin:0;
+      float:left;
+      padding:25px;
+
+  }
+  .ticketMain {
+      color: white;
+      background-color: #333333;
+      width: 500px ;
+      min-height: 1300px;
+      margin-left: auto ;
+      margin-right: auto ;
+      font-size: 14px;
+  }
+  .contactMain {
+      color: white;
+      background-color: #333333;
+      width: 500px ;
+      min-height: 500px;
+      margin-left: auto ;
+      margin-right: auto ;
+  }
+  .movieTicketDetail {
+      width: 430px;
+      height: 300px;
+      float: left;
+      border-color: black;
+  }
+  .movieTicketDetailText {
+      width: 220px;
+      height: 260px;
+      float: right;
+      text-align:center;
+  }
+
+  .movieImgDetail {
+    width: 180px;
+    height: 280px;
+  }
+  .form {
+      padding: 10px;
+      width: 430px;
+      height: 280px;
+  }
+
+  .table {
+    width: 450px;
+    border :1px solid white;
+  }
+}
