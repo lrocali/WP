@@ -1,85 +1,3 @@
-/*var jsonString ={
-	"FO":{
-		"title":"Mardaani",
-		"poster":"\/\/titan.csit.rmit.edu.au\/~e54061\/wp\/movie-service\/FO.jpg",
-		"trailer":"\/\/titan.csit.rmit.edu.au\/~e54061\/wp\/movie-service\/FO.mp4",
-		"rating":"\/\/www.classification.gov.au\/Guidelines\/PublishingImages\/image4.jpeg",
-		"summary":"Every War is Personal",
-		"description":["Shivani Shivaji Roy is an astute cop working in a Mumbai Crime Branch unit. Deft at picking up hidden clues and fearless in confronting hardened criminals, Shivani stumbles into the world of debauchery, cruel desires and exploitation and onto a case that will change her life forever.","A teenage girl is kidnapped by the child trafficking mafia and smuggled outside the city. Shivani embarks on an obsessive hunt for the girl and what follows is a cat and mouse game between a fearless cop and a ruthless mafia kingpin.",
-		"Starring Rani Mukerji in the lead, playing the role of a cop for the first time, this raw and gritty film will be a distinct departure from Pradeep Sarkar’s style of filmmaking."],
-		"sessions":{"Monday":"6pm","Tuesday":"6pm","Saturday":"3pm","Sunday":"3pm"}
-		},
-	"CH":{
-		"title":"Planes: Fire and Rescue",
-		"poster":"\/\/titan.csit.rmit.edu.au\/~e54061\/wp\/movie-service\/CH.jpg",
-		"trailer":"\/\/titan.csit.rmit.edu.au\/~e54061\/wp\/movie-service\/CH.mp4",
-		"rating":"\/\/www.classification.gov.au\/Guidelines\/PublishingImages\/image1.jpeg",
-		"summary":"Cars with Wings","description":["Planes: Fire & Rescue is a new comedy-adventure about second chances, featuring a dynamic crew of elite racing cars equipped with wings and now operating as firefighting aircraft devoted to protecting historic Piston Peak National Park from raging wildfire. When world famous car racer Lightning McQueen, now known as \"Dusty\" (voice of Dane Cook) learns that his engine is damaged and he may never race again, he must shift gears and is launched into the world of aerial firefighting.",
-		"Dusty joins forces with veteran fire and rescue helicopter Blade Ranger and his courageous team, including spirited super scooper Dipper (voice of Julie Bowen), heavy-lift helicopter Windlifter, ex-military transport Cabbie and a lively bunch of brave all-terrain vehicles known as The Smokejumpers. Together, the fearless team battles a massive wildfire and Dusty learns what it takes to become a true hero."],
-		"sessions":{"Monday":"1pm","Tuesday":"1pm","Wednesday":"6pm","Thursday":"6pm","Friday":"6pm","Saturday":"12pm","Sunday":"12pm"}
-		},
-		"RC":{
-			"title":"Once a Princess",
-			"poster":"\/\/titan.csit.rmit.edu.au\/~e54061\/wp\/movie-service\/RC.jpg",
-			"trailer":"\/\/titan.csit.rmit.edu.au\/~e54061\/wp\/movie-service\/RC.mp4","rating":"\/\/www.classification.gov.au\/Guidelines\/PublishingImages\/image3.jpeg","summary":"Always a Princess","description":["A beautiful, rich and princess-like girl \"unexpectedly\" falls for two guys, someone who ticks all the right boxes class-wise and this other guy who seems quite nice, but who is deemed unsuitable by her family. If you’ve seen the Pillow Book or The Great Gatsby, you can guess which one she picks ...","Several years later, the one she thought would be right turns out to be a bad person (nooooo!). Quite by chance she meets the other guy who is now a successful mobile app developer and perhaps now worthy of her parents’ approval. Although it takes her the rest of the movie, the princess dumps the bad one, goes out with the good one and finds true happiness. Until the sequel due out next year (fingers crossed)."],"sessions":{"Monday":"9pm","Tuesday":"9pm","Wednesday":"1pm","Thursday":"1pm","Friday":"1pm","Saturday":"6pm","Sunday":"6pm"}},"AC":{"title":"Guardians of the Galaxy","poster":"\/\/titan.csit.rmit.edu.au\/~e54061\/wp\/movie-service\/AC.jpg","trailer":"\/\/titan.csit.rmit.edu.au\/~e54061\/wp\/movie-service\/AC.mp4","rating":"\/\/www.classification.gov.au\/Guidelines\/PublishingImages\/image3.jpeg","summary":"Not the Avengers","description":["From Marvel, the studio that brought you the global blockbuster franchises of Iron Man, Thor, Captain America and The Avengers, comes a new team - the Guardians of the Galaxy that take over when The Avengers go on vacation.","An action-packed, epic space adventure, where brash adventurer Peter Quill finds himself the object of an unrelenting bounty hunt after stealing a mysterious orb coveted by Ronan, a powerful villain with ambitions that threaten the entire universe, taking over from Loki whilst he is off on vacation too.","To evade the ever-persistent Ronan, Quill is forced into an uneasy truce with a quartet of disparate misfits - Rocket, a gun-toting raccoon, Groot, a tree-like humanoid, the deadly and enigmatic Gamora and the revenge-driven Drax the Destroyer. But when Quill discovers the true power of the orb and the menace it poses to the cosmos, he must do his best to rally his ragtag rivals for a last, desperate stand with the galaxy’s fate in the balance whilst waiting for a postcard from his Avenger pals that never comes ..."],"sessions":{"Wednesday":"9pm","Thursday":"9pm","Friday":"9pm","Saturday":"9pm","Sunday":"9pm"}}}
-*/
-var jsonString = "\/\/saturn.csit.rmit.edu.au\/~e54061\/wp\/movie-service.php?movie=FO"
-var movie1 = {
-	title:"American Sniper",
-	synopsis:"From director Clint Eastwood comes 'American Sniper,' starring Bradley Cooper as Chris Kyle, the most lethal sniper in U.S. military history.",
-	genre:"AC",
-	genreName:"Action",
-	age:"MA 15+",
-	days:["Wed, Thu, Fri","Sat, Sun"],
-	dayByDay:["Wednesday","Thursday","Friday","Saturday","Sunday"],
-	times:["9pm","9pm"],
-	sessions:"",
-	imgName:"images/americanSniper.jpg"
-
-};
-
-var movie2 = {
-	title:"Home",
-	synopsis:"After an alien race invades Earth to escape their enemies, an alien accidentally reveals their location and must go on the run to save the planet.",
-	genre:"CH",
-	genreName:"Children",
-	age:"G",
-	days:["Mon, Tue","Wed, Thu, Fri","Sat, Sun"],
-	dayByDay:["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-	times:["1pm","6pm","12pm"],
-	sessions:"",
-	imgName:"images/home.jpg"
-
-};
-
-var movie3 = {
-	title:"You're My Boss",
-	synopsis:"Pong (Coco Martin) is an executive assistant in an airline company where Georgina Lorenzana (Toni Gonzaga) is an assistant vice presiden.",
-	genre:"RC",
-	genreName:"Romantic Comedy",
-	age:"PG",
-	days:["Mon, Tue","Wed, Thu, Fri","Sat, Sun"],
-	dayByDay:["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-	times:["9pm","1pm","6pm"],
-	sessions:"",
-	imgName:"images/youAreMyBoss.jpg"
-
-};
-
-var movie4 = {
-	title:"Sounds of Music",
-	synopsis:"A woman leaves an Austrian convent to become a governess to the children of a Naval officer widower.",
-	genre:"AF",
-	genreName:"Art/ Foreign Filme",
-	age:"G",
-	days:["Mon, Tue","Sat, Sun"],
-	dayByDay:["Monday","Tuesday","Saturday","Sunday"],
-	times:["6pm","3pm"],
-	sessions:"",
-	imgName:"images/theSoundsOfMusic.jpg"
-
-};
-
 var ticketType = ["SA","SP","SC","FA","FC","B1","B2","B3"]
 var ticketTypeName = [
 	"Standart - Adult",
@@ -140,103 +58,168 @@ var ticketSatSun = [
 	"9pm - Action "
 ]
 
-var mvDetails1 = 0, mvDetails2 = 0, mvDetails3 = 0, mvDetails4 = 0;
+var movieChosen = "AAC"
+// START HOME
+var mvAC = -1, mvFO = -1, mvRC = -1, mvCH = -1;
 var data;
 
-var selectedMovieFromOptions = movie1;
+var seats = [["H1","H2","H3","H4","H5","o","o","o","o","H10","H11","H12","H13","H14"],
+						 ["G1","G2","G3","G4","G5","G6","G7","G8","G9","G10","G11","G12","G13","G14"],
+						["F1","F2","F3","F4","F5","F6","F7","F8","F9","F10","F11","F12","F13","F14"],
+						["E1","E2","E3","E4","E5","E6","E7","E8","E9","E10","E11","E12","E13","E14"],
+						["o","o","o","o","o","D1","D2","D3","D4","o","o","o","o","o"],
+						["o","o","o","o","o","C1","C2","C3","C4","o","o","o","o","o"],
+						["o","o","o","o","o","B1","B2","B3","o","o","o","o","o","o"],
+						["o","o","o","o","o","o","A1","A2","o","o","o","o","o","o"]]
+
 function getInfo() {
-	console.log("getDetails");
-	//getMovie1Details();
-	getMovieDetails("AC");
 	getMovieDetails("FO");
-	getMovieDetails("RC");
 	getMovieDetails("CH");
-	/*
-	getMovie2Details();
-	getMovie3Details();
-	getMovie4Details();*/
+	getMovieDetails("RC");
+	getMovieDetails("AC");
 }
 
-function getJSON(){
+function getJSONHome(){
 	$.ajax({
     type: "POST",
     url: "https://saturn.csit.rmit.edu.au/~e54061/wp/movie-service.php",
     dataType: "json",
     success: function (result) {
-        console.log(result); //Now a JSON object
+        console.log(result);
 				data = result;
-				console.log(data.AC.title);
 				getInfo();
     }
 	});
-	//console.log(data.AC.title);
+}
+
+function getJSONTicket(){
+	$.ajax({
+    type: "POST",
+    url: "https://saturn.csit.rmit.edu.au/~e54061/wp/movie-service.php",
+    dataType: "json",
+    success: function (result) {
+        console.log(result);
+				data = result;
+				getTicketInfo();
+    }
+	});
 }
 function getMovieDetails(strType){
-	var divMvDt = document.getElementById("div"+strType);
-	var objType = getObjType(strType);
-	//console.log(strType);
-	//console.log(objType);
+		var divMvDt = document.getElementById("div"+strType);
+		var objType = getObjType(strType);
 
-	var movieImg = document.createElement("img");
-  movieImg.src = objType.poster;
-	//movieImg.id = strType+"img";
-	movieImg.className = "movieImage"
-  divMvDt.appendChild(movieImg);
+		var movieImg = document.createElement("img");
+	  movieImg.src = objType.poster;
+		movieImg.className = "movieImage"
+	  divMvDt.appendChild(movieImg);
 
-	var dtDiv = document.createElement("div");
-	dtDiv.className = "movieDetail";
-	//dtDiv.id = "dtDiv";
-	divMvDt.appendChild(dtDiv);
+		var dtDiv = document.createElement("div");
+		dtDiv.className = "movieDetail";
+		divMvDt.appendChild(dtDiv);
 
-	var movieTitle = document.createElement("h1");
-	movieTitle.innerHTML = objType.title;
-	//movieTitle.id = "movieTitle";
-	dtDiv.appendChild(movieTitle);
+		var movieTitle = document.createElement("h1");
+		movieTitle.innerHTML = objType.title;
+		dtDiv.appendChild(movieTitle);
 
-	var movieSynopsis = document.createElement("p");
-	movieSynopsis.innerHTML = objType.description[0] + "<br>";
-	//movieSynopsis.id = "movieSynopsis";
-	dtDiv.appendChild(movieSynopsis);
+		var movieRating = document.createElement("p");
+		movieRating.innerHTML = "Rating: G";
+		dtDiv.appendChild(movieRating);
 
-/*
-  var movieImg = document.createElement("img");
-  movieImg.src = movieObj.imgName;
-	movieImg.id = "movieImg";
-	movieImg.className = "movieImgDetail"
-  divMvDt.appendChild(movieImg);
+		var movieSummary = document.createElement("p");
+		movieSummary.innerHTML = "Summary: " + objType.summary;
+		dtDiv.appendChild(movieSummary);
 
-	var dtDiv = document.createElement("div");
-	dtDiv.className = "movieTicketDetailText";
-	dtDiv.id = "dtDiv";
-	divMvDt.appendChild(dtDiv);
+		//More Detail
+		var movieSynopsis = document.createElement("p");
+		movieSynopsis.innerHTML = "";
+		movieSynopsis.id = "synopsis"+strType;
+		dtDiv.appendChild(movieSynopsis);
 
-	var movieTitle = document.createElement("h1");
-	movieTitle.innerHTML = movieObj.title;
-	movieTitle.id = "movieTitle";
-	dtDiv.appendChild(movieTitle);
+		var movieSessions = document.createElement("p");
+		movieSessions.innerHTML = "";
+		movieSessions.id = "sessions"+strType;
+		dtDiv.appendChild(movieSessions);
+		//
+		var btnDiv = document.createElement("div");
+		btnDiv.className = "movieButton";
+		dtDiv.appendChild(btnDiv);
 
-	var movieSynopsis = document.createElement("p");
-	movieSynopsis.innerHTML = "Synopsis: " + movieObj.synopsis + "<br><br>";
-	movieSynopsis.id = "movieSynopsis";
-	dtDiv.appendChild(movieSynopsis);
+		var movieBook = document.createElement("button");
+		movieBook.onclick = function(){
+			location.href="index.php?page=ticket";
+			setTicketType(strType);
+			};
+		movieBook.innerHTML = "Book";
+		movieBook.className = "movieButtonText";
+		btnDiv.appendChild(movieBook);
 
-	var movieGenreName = document.createElement("p");
-	movieGenreName.innerHTML = "Genre Name: " + movieObj.genreName + "<br><br>";
-	movieGenreName.id = "movieGenreName";
-	dtDiv.appendChild(movieGenreName);
+		var movieMore = document.createElement("button");
+		movieMore.innerHTML = "More";
+		movieMore.className = "movieButtonText";
+		movieMore.onclick = function(){
+			moreInfo(strType);
+			};
+		btnDiv.appendChild(movieMore);
 
-	var movieAge = document.createElement("p");
-	movieAge.innerHTML = "Movie Rating: " + movieObj.age + "<br><br>";
-	movieAge.id = "movieAge";
-	dtDiv.appendChild(movieAge);
-
-	var movieSessions = document.createElement("p");
-	movieSessions.innerHTML = "Movie Sessions: " + getSessions(movieObj) + "<br><br>";
-	movieSessions.id = "movieSessions";
-	dtDiv.appendChild(movieSessions);
-*/
+		/*var hrDiv = document.createElement("div");
+		hrDiv.className="hrMovie";
+		divMvDt.appendChild(hrDiv);*/
 }
 
+function setTicketType(strType){
+	sessionStorage.setItem("chosenMovie",strType);
+}
+
+function getMV(strType){
+	var mv;
+	if (strType == "AC") {
+		mv = mvAC;
+	}
+	else if (strType == "FO") {
+		mv = mvFO;
+	}
+	else if (strType == "RC") {
+		mv = mvRC;
+	}
+	else  if (strType == "CH") {
+		mv = mvCH;
+	}
+	return mv;
+}
+
+function changeMV(strType){
+	if (strType == "AC") {
+		mvAC = mvAC*(-1);
+	}
+	else if (strType == "FO") {
+		mvFO = mvFO*(-1);
+	}
+	else if (strType == "RC") {
+		mvRC = mvRC*(-1);
+	}
+	else  if (strType == "CH") {
+		mvCH = mvCH*(-1);
+	}
+}
+function moreInfo(strType){
+	changeMV(strType);
+	getMoreDetails(strType);
+}
+
+function getMoreDetails(strType){
+	mv = getMV(strType);
+	var objType = getObjType(strType);
+	var movieSynopsis = document.getElementById("synopsis"+strType);
+	var movieSessions = document.getElementById("sessions"+strType);
+	if(mv == 1){
+		movieSynopsis.innerHTML = objType.description[0];
+		movieSessions.innerHTML = getSessions(objType.sessions)
+	}
+	else {
+		movieSynopsis.innerHTML = "";
+		movieSessions.innerHTML = "";
+	}
+}
 function getObjType(strType){
 	var objType;
 	if (strType == "AC") {
@@ -253,97 +236,34 @@ function getObjType(strType){
 	}
 	return objType;
 }
-/*
-function getMovie1Details() {
-if(mvdetails1 == 0){
-	document.getElementById("title1").innerHTML = data.AC.title;
-	document.getElementById("synopsis1").innerHTML = data.AC.description[0];
-	document.getElementById("genre1").innerHTML = "";
-	document.getElementById("ageRating1").innerHTML ="";
-	document.getElementById("time1").innerHTML = "";
-		mvdetails1 = 1
 
-}
-else {
-	document.getElementById("title1").innerHTML = data.AC.title;
-	document.getElementById("synopsis1").innerHTML = data.AC.description[0];
-	document.getElementById("genre1").innerHTML = data.AC;
-	document.getElementById("ageRating1").innerHTML = "Movie rating: " + movie1.age;
-	movie1.sessions = getSessions(movie1);
-	document.getElementById("time1").innerHTML = movie1.sessions;
-	mvdetails1 = 0;
-}
-}
-function getMovie2Details() {
-	if(mvdetails2 == 0){
-		document.getElementById("title2").innerHTML = movie2.title;
-		document.getElementById("synopsis2").innerHTML = "Synopsis: " + movie2.synopsis;
-		document.getElementById("genre2").innerHTML = "";
-		document.getElementById("ageRating2").innerHTML ="";
-		document.getElementById("time2").innerHTML = "";
-			mvdetails2 = 1
-
+function getSessions(obj) {
+	//console.log("sessions");
+	var strSessions = "";
+	if(obj.Monday != null){
+		strSessions = strSessions + "Monday: " + obj.Monday + ",";
 	}
-	else {
-		document.getElementById("title2").innerHTML = movie2.title;
-		document.getElementById("synopsis2").innerHTML = "Synopsis: " + movie2.synopsis;
-		document.getElementById("genre2").innerHTML = "Genre: " + movie2.genreName;
-		document.getElementById("ageRating2").innerHTML = "Movie rating: " + movie2.age;
-		movie2.sessions = getSessions(movie2);
-		document.getElementById("time2").innerHTML = movie2.sessions;
-		mvdetails2 = 0;
+	if(obj.Tuesday != null){
+		strSessions = strSessions + " Tuesday: " + obj.Tuesday + ",";
 	}
+	if(obj.Wednesday != null){
+		strSessions = strSessions + " Wednesday: " + obj.Wednesday + ",";
+	}
+	if(obj.Thursday != null){
+		strSessions = strSessions + " Thursday: " + obj.Thursday + ",";
+	}
+	if(obj.Friday != null){
+		strSessions = strSessions + " Friday: " + obj.Friday + ",";
+	}
+	if(obj.Saturday != null){
+		strSessions = strSessions + " Saturday: " + obj.Saturday + ",";
+	}
+	if(obj.Sunday != null){
+		strSessions = strSessions + " Sunday: " + obj.Sunday + ",";
+	}
+	return strSessions
 }
-function getMovie3Details() {
-	if(mvdetails3 == 0){
-		document.getElementById("title3").innerHTML = movie3.title;
-		document.getElementById("synopsis3").innerHTML = "Synopsis: " + movie3.synopsis;
-		document.getElementById("genre3").innerHTML = "";
-		document.getElementById("ageRating3").innerHTML ="";
-		document.getElementById("time3").innerHTML = "";
-			mvdetails3 = 1
-
-	}
-	else {
-		document.getElementById("title3").innerHTML = movie3.title;
-		document.getElementById("synopsis3").innerHTML = "Synopsis: " + movie3.synopsis;
-		document.getElementById("genre3").innerHTML = "Genre: " + movie3.genreName;
-		document.getElementById("ageRating3").innerHTML = "Movie rating: " + movie3.age;
-		movie3.sessions = getSessions(movie3);
-		document.getElementById("time3").innerHTML = movie3.sessions;
-		mvdetails3 = 0;
-	}
-
-}
-function getMovie4Details() {
-	if(mvdetails4 == 0){
-		document.getElementById("title4").innerHTML = movie4.title;
-		document.getElementById("synopsis4").innerHTML = "Synopsis: " + movie4.synopsis;
-		document.getElementById("genre4").innerHTML = "";
-		document.getElementById("ageRating4").innerHTML ="";
-		document.getElementById("time4").innerHTML = "";
-			mvdetails4 = 1
-
-	}
-	else {
-		document.getElementById("title4").innerHTML = movie4.title;
-		document.getElementById("synopsis4").innerHTML = "Synopsis: " + movie4.synopsis;
-		document.getElementById("genre4").innerHTML = "Genre: " + movie4.genreName;
-		document.getElementById("ageRating4").innerHTML = "Movie rating: " + movie4.age;
-		movie4.sessions = getSessions(movie4);
-		document.getElementById("time4").innerHTML = movie4.sessions;
-		mvdetails4 = 0;
-	}
-}
-*/
-function getSessions(movie){
-	var sessions = "";
-	for (var i = 0; i <= movie.days.length-1; i++) {
-		sessions = sessions + movie.days[i] + " - " + movie.times[i];
-		sessions = sessions + " | ";
-	}
-	return sessions;
-}
+// END HOME
 
 function bookMovie(){
 	if (document.getElementById("price").innerHTML == "$0.00"){
@@ -351,28 +271,10 @@ function bookMovie(){
 		return false;
 	}
 	//alert("booked");
-	alert("You have booked " + selectedMovieFromOptions + " for " + document.getElementById("day").value +" at " + document.getElementById("time").value);
+	alert("You have booked "+" for " + document.getElementById("day").value +" at " + document.getElementById("time").value);
 
 	//alert("You have booked " + selectedMovieFromOptions);
 
-}
-
-function selectedMovie(selected){
-	/*window.name based from http://www.boutell.com/newfaq/creating/scriptpass.html*/
-	console.log(data.FO.title);
-	if (selected == "movie1") {
-		sessionStorage.setItem("film",movie1.title);
-		/*localStorage.film = "";*/
-	}
-	if (selected == "movie2") {
-		sessionStorage.setItem("film",movie2.title);
-	}
-	if (selected == "movie3") {
-		sessionStorage.setItem("film",movie3.title);
-	}
-	if (selected == "movie4") {
-		sessionStorage.setItem("film",movie4.title);
-	}
 }
 
 function getPriceAndSchedule() {
@@ -380,53 +282,36 @@ function getPriceAndSchedule() {
 	tableScheduleCreate();
 }
 
+function getTicketInfoDetails(strType){
+	var objType = getObjType(strType);
+
+	var movieImg = document.getElementById("imgTicketDetail");	//--
+	movieImg.src = objType.poster;
+
+	var movieTitle = document.getElementById("titleTicketDetail"); //--
+	movieTitle.innerHTML = objType.title;
+
+	var movieRating = document.getElementById("ratingTicketDetail"); //--
+	movieRating.innerHTML = "Rating: G";
+
+	var movieSessions = document.getElementById("sessionsTicketDetail"); //--
+	movieSessions.innerHTML = getSessions(objType.sessions);
+
+	var movieDescription = document.getElementById("descriptionTicketDetail"); //--
+	movieDescription.innerHTML = objType.description[0] + " "+objType.description[1] + " "+objType.description[2];
+
+}
 function getTicketInfo() {
-
-	if (sessionStorage.getItem("film") == null) {
-		sessionStorage.setItem("film",movie1.title);
+	if (sessionStorage.getItem("chosenMovie") == null) {
+		sessionStorage.setItem("chosenMovie","AC");
 	}
-	var divMvDt = document.getElementById("divMovieDetail");
-	var movieObj = getMovie(sessionStorage.getItem("film"));
-
-  var movieImg = document.createElement("img");
-  movieImg.src = movieObj.imgName;
-	movieImg.id = "movieImg";
-	movieImg.className = "movieImgDetail"
-  divMvDt.appendChild(movieImg);
-
-	var dtDiv = document.createElement("div");
-	dtDiv.className = "movieTicketDetailText";
-	dtDiv.id = "dtDiv";
-	divMvDt.appendChild(dtDiv);
-
-	var movieTitle = document.createElement("h1");
-	movieTitle.innerHTML = movieObj.title;
-	movieTitle.id = "movieTitle";
-	dtDiv.appendChild(movieTitle);
-
-	var movieSynopsis = document.createElement("p");
-	movieSynopsis.innerHTML = "Synopsis: " + movieObj.synopsis + "<br><br>";
-	movieSynopsis.id = "movieSynopsis";
-	dtDiv.appendChild(movieSynopsis);
-
-	var movieGenreName = document.createElement("p");
-	movieGenreName.innerHTML = "Genre Name: " + movieObj.genreName + "<br><br>";
-	movieGenreName.id = "movieGenreName";
-	dtDiv.appendChild(movieGenreName);
-
-	var movieAge = document.createElement("p");
-	movieAge.innerHTML = "Movie Rating: " + movieObj.age + "<br><br>";
-	movieAge.id = "movieAge";
-	dtDiv.appendChild(movieAge);
-
-	var movieSessions = document.createElement("p");
-	movieSessions.innerHTML = "Movie Sessions: " + getSessions(movieObj) + "<br><br>";
-	movieSessions.id = "movieSessions";
-	dtDiv.appendChild(movieSessions);
+	var stype = sessionStorage.getItem("chosenMovie");
+	getTicketInfoDetails(stype);
+	//-------------------------
 
 	//create movie NAME select option
 	var movieOpt = document.getElementById("movieOpt");
-	var movies = [movie1.title,movie2.title,movie3.title,movie4.title];
+	var movies = [getObjType("FO").title,getObjType("CH").title,getObjType("RC").title,getObjType("AC").title];
 
 	var movieOptions = document.createElement("select");
 	movieOptions.id = "film";
@@ -439,12 +324,14 @@ function getTicketInfo() {
 	    option.text = movies[i];
 	    movieOptions.appendChild(option);
 	}
-	SelectElement(sessionStorage.getItem("film"));
 
-	//create movie session DAY select option
+	var objChosen = getObjType(stype);
+	selectElement(objChosen.title);
 	var dayOpt = document.getElementById("dayOpt");
-	var days = getDays(sessionStorage.getItem("film"));
+	var days = getDayOrTime(objChosen.sessions,0);
+	//console.log(days[0]);
 
+	//CREATE DAY SELECT OPTION
 	var dayOptions = document.createElement("select");
 	dayOptions.id = "day";
 	dayOptions.name = "day";
@@ -459,16 +346,15 @@ function getTicketInfo() {
 
 	//create movie session TIME
 	var timeOpt = document.getElementById("timeOpt");
-	var time = getTime(days[0],sessionStorage.getItem("film"));
-	timeOpt.appendChild(document.createTextNode(time));
-
+	var time = getDayOrTime(objChosen.sessions,1);
+	//console.log("TIMEE"+time[0]);
+	timeOpt.appendChild(document.createTextNode(time[0]));
 	var inputTime = document.createElement("input");
 	inputTime.hidden = true;
 	inputTime.id = "time";
 	inputTime.name = "time";
 	inputTime.value = time;
 	document.getElementById("ticketForm").appendChild(inputTime);
-
 
 	//create label total Price
 	var price = document.getElementById("price");
@@ -479,8 +365,142 @@ function getTicketInfo() {
 	notickets.appendChild(document.createTextNode("You did not select any ticket"));
 	notickets.hidden = true;
 
-	selectedMovieFromOptions = sessionStorage.getItem("film");
+	var divSeatsToSelect = document.getElementById("divSeatsToSelect");
+	divSeatsToSelect.appendChild(document.createTextNode("You should select 0 seats"));
+
+	var divAddToCart = document.getElementById("divAddToCart");
+	var btnAddToCart = document.createElement("button");
+	btnAddToCart.innerHTML = "Add to Cart";
+	//btnAddToCart.className = "movieButtonText";
+	btnAddToCart.onclick = function(){
+		//moreInfo(strType);
+		//console.log("lahfdlasjd");
+		//alert("jadsja");
+		createCart();
+		};
+	divAddToCart.appendChild(btnAddToCart);
+
 	tableCreate();
+	tableSeatCreate();
+}
+
+function createCart(){
+	var divCart = document.getElementById("divCart");
+
+	var seatsSelected = checkForSelectedSeats();
+	divCart.appendChild(document.createTextNode(seatsSelected));
+}
+
+function getDayOrTime(obj,DoT) { //DoT = 0 fot day and ,DoT = 1 for time
+	var DaysOrTimes = [];
+	if(obj.Monday != null){
+		if(DoT == 0){
+			DaysOrTimes.push("Monday");
+		}
+		else {
+			DaysOrTimes.push(obj.Monday);
+		}
+	}
+	if(obj.Tuesday != null){
+		if(DoT == 0){
+			DaysOrTimes.push("Tuesday");
+		}
+		else {
+			DaysOrTimes.push(obj.Tuesday);
+		}
+	}
+	if(obj.Wednesday != null){
+		if(DoT == 0){
+			DaysOrTimes.push("Wednesday");
+		}
+		else {
+			DaysOrTimes.push(obj.Wednesday);
+		}
+	}
+	if(obj.Thursday != null){
+		if(DoT == 0){
+			DaysOrTimes.push("Thursday");
+		}
+		else {
+			DaysOrTimes.push(obj.Thursday);
+		}
+	}
+	if(obj.Friday != null){
+		if(DoT == 0){
+			DaysOrTimes.push("Friday");
+		}
+		else {
+			DaysOrTimes.push(obj.Friday);
+		}
+	}
+	if(obj.Saturday != null){
+		if(DoT == 0){
+			DaysOrTimes.push("Saturday");
+		}
+		else {
+			DaysOrTimes.push(obj.Saturday);
+		}
+	}
+	if(obj.Sunday != null){
+		if(DoT == 0){
+			DaysOrTimes.push("Sunday");
+		}
+		else {
+			DaysOrTimes.push(obj.Sunday);
+		}
+	}
+	return DaysOrTimes
+}
+
+
+function tableSeatCreate(){
+    var tickets = document.getElementById("seats"),
+        tbl  = document.createElement('table');
+		tbl.className = "table"
+
+		//ROW
+    for(var i = 0; i < 8; i++){
+        var tr = tbl.insertRow();
+        for(var j = 0; j < 14; j++){
+                var td = tr.insertCell();
+								if (seats[i][j] == "o"){
+									var divText = document.createTextNode("");
+									td.appendChild(divText);
+								}
+								else {
+									var divText = document.createTextNode(seats[i][j]);
+									td.appendChild(divText);
+
+									var checkbox = document.createElement('input');
+									checkbox.type = "checkbox";
+									checkbox.name = seats[i][j];
+									checkbox.value = seats[i][j];
+									checkbox.id = "id"+seats[i][j];
+									td.appendChild(checkbox);
+								}
+								td.className = "seatsTable"
+                td.style.border = "1px solid white";
+        }
+    }
+    tickets.appendChild(tbl);
+}
+
+function checkForSelectedSeats(){
+	//console.log(document.getElementById("id"+seats[0][0]).checked);
+	var selectedSeats = [];
+	for(var i = 0; i < 8; i++){
+			for(var j = 0; j < 14; j++){
+				//console.log(i+j);
+				if (seats[i][j] != "o"){
+					var seat = document.getElementById("id"+seats[i][j]);
+					if (document.getElementById("id"+seats[i][j]).checked){
+					selectedSeats.push(document.getElementById("id"+seats[i][j]).name);
+					}
+				}
+			}
+	}
+	console.log(selectedSeats);
+	return selectedSeats;
 }
 
 function tableScheduleCreate(){
@@ -666,6 +686,16 @@ function tableCreate(){
     }
     tickets.appendChild(tbl);
 }
+function getNumOfTickets(){
+	var numOfTickets = 0;
+	for(var i = 0; i < 8; i++){
+		var type = document.getElementById(ticketType[i]);
+		var quantity = type.options[type.selectedIndex].text;
+
+		numOfTickets = numOfTickets + parseInt(quantity);
+	}
+	return numOfTickets;
+}
 
 function refreshPrice(){
 	var totalPrice = 0;
@@ -676,6 +706,7 @@ function refreshPrice(){
 		var ip = document.getElementById("individualPrice"+ticketType[i]);
 		var day = document.getElementById("day");
 		var daySelected = day.options[day.selectedIndex].text;
+
 
 		var timeDiv = document.getElementById("timeOpt");
 		timeSelected = timeDiv.innerHTML;
@@ -689,6 +720,9 @@ function refreshPrice(){
 		totalPrice = totalPrice + subPrice;
 
 	}
+	var divSeatsToSelect = document.getElementById("divSeatsToSelect");
+	divSeatsToSelect.innerHTML = 	"You should select "+getNumOfTickets()+" seats";
+
 	var price = document.getElementById("price");
 	var totalPriceFloat = (totalPrice).toFixed(2);
 	price.innerHTML = "$"+totalPriceFloat.toString();
@@ -749,33 +783,40 @@ function calculatePrice(day,time,type, quantity){
 	return subPrice;
 
 }
+function getTypeByTitle(title){
+	var type;
+	if (title == data.AC.title){
+		type = "AC";
+	}
+	if (title == data.FO.title){
+		type = "FO";
+	}
+	if (title == data.RC.title){
+		type = "RC";
+	}
+	if (title == data.CH.title){
+		type = "CH";
+	}
+	return type;
+}
 
 function refreshTicketInfo(){
 	var e = document.getElementById("film");
 	var strUser = e.options[e.selectedIndex].text;
-	selectedMovieFromOptions = strUser;
+	var type = getTypeByTitle(strUser);
+	var objType = getObjType(type);
+	/*
+	type = "AC"
+	strUser = AC.title
 
-	var divMvDt = document.getElementById("divMovieDetail");
-	var movieObj = getMovie(selectedMovieFromOptions);
-	//alert(selectedMovieFromOptions);
-  var movieImg = document.getElementById("movieImg");
-  movieImg.src = movieObj.imgName;
-  divMvDt.appendChild(movieImg);
-	var dtDiv = document.getElementById("dtDiv");
+	*/
+	getTicketInfoDetails(type);
 
-	var title = document.getElementById("movieTitle");
-	title.innerHTML = movieObj.title;
-	//alert(movieObj.synopsis);
-	var movieSynopsis = document.getElementById("movieSynopsis");
-	movieSynopsis.innerHTML = "Synopsis: " + movieObj.synopsis + "<br><br>";
-
-	var movieGenreName = document.getElementById("movieGenreName");
-	movieGenreName.innerHTML = "Genre Name: " + movieObj.genreName;
-	//*/
 
 	//refresh DAY options
 	deleteOptions("day");
-	var days = getDays(selectedMovieFromOptions);
+
+	var days = getDayOrTime(objType.sessions,0);
 	var dayOptions = document.getElementById("day");
 	for (var i = 0; i < days.length; i++) {
 	    var option = document.createElement("option");
@@ -790,12 +831,16 @@ function refreshTicketInfo(){
 }
 
 function refreshTime(){
+	var e = document.getElementById("film");
+	var strUser = e.options[e.selectedIndex].text;
+	var type = getTypeByTitle(strUser);
+	var objType = getObjType(type);
+
 	var timeDiv = document.getElementById("timeOpt");
 	var day = document.getElementById("day");
 
-	var daySelected = day.options[day.selectedIndex].text;
-	var time = getTime(daySelected,selectedMovieFromOptions);
-	timeDiv.innerHTML = time;
+	var time = getDayOrTime(objType.sessions,1);
+	timeDiv.innerHTML = time[day.selectedIndex];
 
 	var inputTime = document.createElement("input");
 	inputTime.hidden = true;
@@ -812,99 +857,7 @@ function deleteOptions(dayOrTime){
 	while (options.firstChild ) options.removeChild(options.firstChild );
 }
 
-function getDays(movie){
-	var dayss = [];
-	if (movie == movie1.title) {
-		dayss = movie1.dayByDay;
-	}
-	else if (movie == movie2.title) {
-		dayss = movie2.dayByDay;
-	}
-	else if (movie == movie3.title) {
-		dayss = movie3.dayByDay;
-	}
-	else  if (movie == movie4.title) {
-		dayss = movie4.dayByDay;
-	}
-	return dayss
-}
-
-function getMovie(movie){
-	var movieObj;
-	if (movie == movie1.title) {
-		movieObj = movie1;
-	}
-	else if (movie == movie2.title) {
-		movieObj = movie2;
-	}
-	else if (movie == movie3.title) {
-		movieObj = movie3;
-	}
-	else  if (movie == movie4.title) {
-		movieObj = movie4;
-	}
-	return movieObj
-}
-
-function getTime(day,movie){
-	var time = "";
-	if (movie == movie1.title) {
-		if(day==movie1.dayByDay[0] || day==movie1.dayByDay[1] || day==movie1.dayByDay[2]){
-			time = movie1.times[0];
-		}
-		if(day==movie1.dayByDay[3] ||day==movie1.dayByDay[4]){
-			time = movie1.times[1];
-		}
-	}
-	else if (movie == movie2.title) {
-		if(day==movie2.dayByDay[0] || day==movie2.dayByDay[1]){
-			time = movie2.times[0];
-		}
-		if(day==movie2.dayByDay[2] || day==movie2.dayByDay[3] || day==movie2.dayByDay[4]){
-			time = movie2.times[1];
-		}
-		if(day==movie2.dayByDay[5] || day==movie2.dayByDay[6]){
-			time = movie2.times[2];
-		}
-	}
-	else if (movie == movie3.title) {
-		if(day==movie3.dayByDay[0] ||day==movie3.dayByDay[1]){
-			time = movie3.times[0];
-		}
-		if(day==movie3.dayByDay[2] || day==movie3.dayByDay[3] || day==movie3.dayByDay[4]){
-			time = movie3.times[1];
-		}
-		if(day==movie3.dayByDay[5] || day==movie3.dayByDay[6]){
-			time = movie3.times[2];
-		}
-	}
-	else  if (movie == movie4.title) {
-		if(day==movie4.dayByDay[0] || day==movie4.dayByDay[1]){
-			time = movie4.times[0];
-		}
-		if(day==movie4.dayByDay[2] || day==movie4.dayByDay[3]){
-			time = movie4.times[1];
-		}
-	}
-	return time;
-}
-
-function SelectElement(valueToSelect){
+function selectElement(valueToSelect){
     var element = document.getElementById('film');
     element.value = valueToSelect;
 }
-
-/*/*<img class="movieImage"
-src="images/americanSniper.jpg" alt="AmericanSniper" />
-<div class = "movieDetail">
-		<h1 id="title1"></h1>
-		<p id="synopsis1"></p>
-		<p id="genre1"></p>
-		<p id="ageRating1"></p>
-		<p id="time1"></p>
-		<div class="movieButton">
-		<a class ="movieButtonText" href="index.php?page=ticket" id="movie1" onclick="selectedMovie(id)">Book</a>
-		<a class ="movieButtonText" id="movie1Detail" onclick="getMovie1Details();">Details</a>
-		</div>
-</div>
-<div class="hrMovie"></div>*/

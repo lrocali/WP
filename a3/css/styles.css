@@ -47,10 +47,11 @@ header {
     width: 200px;
     background-color: #FF6600;
     padding: 25px;
+    transition: background-color .5s;
 }
 
 .menuButtons:hover {
-    color:#FF6600;
+    /*color:#FF6600;*/
     background-color: #666666;
 }
 
@@ -172,18 +173,28 @@ header {
     border-color: black;
 }
 
-.movieTicketDetail {
-    width: 930px;
-    height: 400px;
+.divTicketInfo {
+    width: 950px;
+    height: 450px;
     float: left;
-    border-color: black;
 }
-.movieTicketDetailText {
-    width: 600px;
-    height: 360px;
+.ticketInfo {
+    width: 690px;
+    height: 460px;
     float: right;
     padding: 10px;
     text-align:center;
+}
+.ticketInfo p{
+    padding-top: 10px;
+}
+.divTicketImg{
+  width: 200px;
+  height: 460px;
+  margin:0px;
+  float: left;
+  padding-top:40px;
+  padding-left:20px;
 }
 
 .movieImage {
@@ -204,23 +215,12 @@ header {
 }
 .movieDetail p{
     font-size: 14px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 1px;
 }
 .movieButton {
-    list-style: none;
     width: 240px;
-    float:left;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-.movieButtonText:hover {
-    color:#FF6600;
-    widht:100px;
-    height:20px;
-    background-color: #666666;
-    color:white;
+    float: left;
+    margin: 5px;
 }
 
 .movieButtonText {
@@ -237,7 +237,6 @@ header {
 .movieButtonText:hover{
     color:white;
 }
-
 
 footer {
     margin-left: auto;
@@ -265,18 +264,24 @@ footer {
     padding: 10px;
 }
 
+
+
 .tablePrices {
   color: white;
 }
 .formLabel {
-  width:120px;
-  padding:0px;
+  padding:10px;
   margin:0px;
+  float: left;
 }
 
 .ticketTable {
   padding:10px;
   color: white;
+}
+.seatsTable {
+  padding:5px;
+  color:white;
 }
 .table {
   width: 950px;
@@ -355,11 +360,6 @@ footer {
       height: 260px;
       float: right;
       text-align:center;
-  }
-
-  .movieImgDetail {
-    width: 180px;
-    height: 280px;
   }
   .form {
       padding: 10px;

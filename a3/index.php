@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-  <head onload="getJSON()">
+  <head>
     <title>Web Programming - Assignment 3</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
