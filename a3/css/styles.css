@@ -3,6 +3,7 @@ body {
     margin: 0;
     background-color: #666666;
 }
+
 header {
     background-color:#333333;
 }
@@ -11,25 +12,27 @@ header {
     width: 40px;
     height: 40px;
 }
-
-
-  .logoArea {
-      margin-left: auto ;
-      margin-right: auto ;
-      padding: 15px;
-      width: 1000px;
-      text-align: center;
-      text-decoration: none;
-  }
+.logoArea {
+      margin-left: auto ;  
+     margin-right: auto ;
+    padding: 15px;
+     width: 1000px;
+     text-align: center;
+     text-decoration: none;
+ }
 
 
 .logoText{
     color: #FF6600;
+    transition: color .9s;
     text-decoration: none;
     font-size: 50px;
 
 }
 
+.logoText:hover{
+    color:#FFA200;
+}
 .menuBar {
     margin-bottom: 0;
     width: 1000px;
@@ -47,12 +50,13 @@ header {
     width: 200px;
     background-color: #FF6600;
     padding: 25px;
-    transition: background-color .5s;
+    transition: background-color .8s;
+    border-radius: 3px;
 }
 
 .menuButtons:hover {
     /*color:#FF6600;*/
-    background-color: #666666;
+    background-color: #FFA200;
 }
 
 .menuTexts{
@@ -66,9 +70,6 @@ header {
     padding-bottom: 25px;
     padding-left: 50px;
     padding-right: 50px;
-}
-.menuTexts:hover{
-    color:white;
 }
 
 .indexMain {
@@ -116,6 +117,7 @@ header {
     background-color: #666666;
     padding: 10px;
     margin: 0;
+       border-radius: 5px;
 
 }
 
@@ -162,6 +164,7 @@ header {
     height: 6px;
     background-color: #FF6600;
     margin-bottom: 10px;
+       border-radius: 5px;
 }
 
 .hrMovie{
@@ -171,7 +174,7 @@ header {
 
 .movie {
     width: 450px;
-    min-height: 350px;
+    min-height: 400px;
     float: left;
     padding: 10px;
     border-color: black;
@@ -183,8 +186,9 @@ header {
 
 .divTicketInfo {
     width: 950px;
-    height: 450px;
+    min-height: 450px;
     float: left;
+   overflow: auto;
 }
 .ticketInfo {
     width: 690px;
@@ -236,15 +240,17 @@ header {
     color:black;
     background-color: #FF6600;
     font-size: 14px;
+    transition: background-color .9s;
     text-decoration: none;
     text-transform: uppercase;
     text-align: center;
     padding-left: 30px;
     padding-right: 30px;
+       border-radius: 5px;
 }
 
 .movieButtonText:hover{
-    color:white;
+    background-color:#FFA20e;
 }
 
 footer {
@@ -352,7 +358,7 @@ footer {
   text-align: center;
   maring:20px;
 }
-@media (max-width:800px){
+@media (max-width:600px){ /*                                       ##################################*/
 
     .logoArea {
         margin-left: auto ;
@@ -414,26 +420,41 @@ footer {
       margin-left: auto ;
       margin-right: auto ;
   }
-  .movieTicketDetail {
-      width: 430px;
-      min-height: 300px;
-      float: left;
-      border-color: black;
+  .divTicketInfo {
+    width: 450px;
+   min-height: 450px;
+    overflow: auto;
   }
-  .movieTicketDetailText {
-      width: 220px;
-      min-height: 260px;
-      float: right;
-      text-align:center;
+  .divTicketImg{
+     width: 410px;
+     height: 280px;
+    	text-align: center;
   }
-  .form {
-      padding: 10px;
-      width: 430px;
-      min-height: 280px;
-  }
-
+  .ticketInfo {
+    width: 430px;
+    min-height: 460px;
+    padding: 10px;
+    text-align:center;
+}
   .table {
     width: 450px;
     border :1px solid white;
+    
   }
+  .seatsTable {
+  padding:2px;
+  color:white;
+}
+  .tableScreen {
+  text-align:center;
+  width: 450px;
+  border :1px solid white;
+  background-color: white;
+  color: black;
+}
+.cartTable {
+  width: 428px;
+  border :1px solid white;
+  margin: 5px;
+}
 }

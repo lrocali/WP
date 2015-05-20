@@ -9,7 +9,7 @@
     <div>
       <div class="logoArea">
         <img class="logoImage" src="images/filmreel.png"  alt= "Silverado Cinema" />
-        <a href=" http://titan.csit.rmit.edu.au/~e54061/wp/movie-service.php " class="logoText"><strong>SILVERADO CINEMA</strong></a>
+        <a href="index.php?page=home" class="logoText"><strong>SILVERADO CINEMA</strong></a>
       </div>
       <ul class = "menuBar">
         <li class="menuButtons">
@@ -29,7 +29,6 @@
   </header>
   <?php
     session_start();
-    $_SESSION['x']="y";
     $validPages=['home','ticket','prices','contact','print'];
     if( in_array($_GET['page'],$validPages) ) {
       switch ($_GET['page']) {
@@ -50,10 +49,10 @@
     <div class="hr"></div>
       <div class="footerArea">
         &copy;Lucas Rocali Assuncao Assis s3495204 | 2015 |
-        <a href="http://validator.w3.org/check?uri=https://titan.csit.rmit.edu.au/~s3495204/wp/a1/index.php?page=home">
+        <a href="http://validator.w3.org/check?uri=https://saturn.csit.rmit.edu.au/~s3495204/wp/a3/index.php?page=<?php echo $_GET['page']; ?>">
           <img class="footerValidator" src="images/HTML5_Logo_32.png" alt="HTML Validator" />
         </a>
       </div>
-      <?php// include_once("/home/eh1/e54061/public_html/wp/debug.php"); ?>
+      <?php include_once("/home/eh1/e54061/public_html/wp/debug.php"); ?>
   </footer>
 </html>

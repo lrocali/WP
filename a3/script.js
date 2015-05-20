@@ -122,9 +122,6 @@ function getJSONTicket(){
 	});
 }
 function getMovieDetails(strType){
-	//var text = sessionStorage.getItem('cart');
-		//var obj = JSON.parse(text);
-		////console.log(obj);
 		console.log("div"+strType);
 		console.log(data);
 		var divMvDt = document.getElementById("div"+strType);
@@ -179,15 +176,11 @@ function getMovieDetails(strType){
 			};
 		btnDiv.appendChild(movieMore);
 
-		//Mre Detail
+		//More Detail
 		var movieSynopsis = document.createElement("p");
 		movieSynopsis.innerHTML = "";
 		movieSynopsis.id = "synopsis"+strType;
 		dtDiv.appendChild(movieSynopsis);
-		//
-		/*var hrDiv = document.createElement("div");
-		hrDiv.className="hrMovie";
-		divMvDt.appendChild(hrDiv);*/
 }
 
 function setTicketType(strType){
