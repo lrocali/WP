@@ -84,7 +84,9 @@ header {
     color: white;
     background-color: #333333;
     width: 1000px ;
-    min-height: 1500px;
+    min-height:500px;
+    height: auto;
+    overflow:auto;
     margin-left: auto ;
     margin-right: auto ;
 }
@@ -100,7 +102,7 @@ header {
 
 .subMain {
     width:950px;
-    max-height: 1000px;
+    min-height: 500px;
     margin:0;
     float:left;
     padding:25px;
@@ -172,6 +174,9 @@ header {
     padding: 10px;
     border-color: black;
 }
+.divAddToCart {
+  padding:10px;
+}
 
 .divTicketInfo {
     width: 950px;
@@ -180,7 +185,7 @@ header {
 }
 .ticketInfo {
     width: 690px;
-    height: 460px;
+    min-height: 460px;
     float: right;
     padding: 10px;
     text-align:center;
@@ -205,7 +210,7 @@ header {
 .movieDetail {
     float: right;
     width:240px;
-    height:300px;
+    min-height:300px;
 }
 
 .movieDetail h1{
@@ -264,10 +269,34 @@ footer {
     padding: 10px;
 }
 
+.subDivCart{
+  border-style: solid;
+  border-width: 1px;
+}
+.divCheckOut p{ 
+  text-align:right;
+}
+.subDivCheckOut{
+  float:right;
+}
 
+.divCart p{
+  text-align:left;
+  padding:10px;
+}
+.divDeleteCart p{
+  text-align: right;
+}
 
 .tablePrices {
   color: white;
+}
+.tableScreen {
+  text-align:center;
+  width: 950px;
+  border :1px solid white;
+  background-color: white;
+  color: black;
 }
 .formLabel {
   padding:10px;
@@ -286,6 +315,23 @@ footer {
 .table {
   width: 950px;
   border :1px solid white;
+}
+.cartTable {
+  width: 928px;
+  border :1px solid white;
+  margin: 10px;
+}
+
+.divSeat{
+   border :1px solid white;
+   padding: 10px;
+   width:400px;
+   margin-left:auto;
+   margin-right:auto;
+  
+}
+.divSeat p{ 
+   text-align:left;
 }
 @media (max-width:800px){
 
@@ -351,20 +397,20 @@ footer {
   }
   .movieTicketDetail {
       width: 430px;
-      height: 300px;
+      min-height: 300px;
       float: left;
       border-color: black;
   }
   .movieTicketDetailText {
       width: 220px;
-      height: 260px;
+      min-height: 260px;
       float: right;
       text-align:center;
   }
   .form {
       padding: 10px;
       width: 430px;
-      height: 280px;
+      min-height: 280px;
   }
 
   .table {

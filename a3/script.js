@@ -57,6 +57,9 @@ var ticketSatSun = [
 	"6pm - Romantic Comedy",
 	"9pm - Action "
 ]
+var cartTableDescrition = ["Ticket Type","Cost","Quantity","Seats","Subtotal"];
+
+var CHAR = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 
 var movieChosen = "AAC"
 // START HOME
@@ -71,9 +74,23 @@ var seats = [["H1","H2","H3","H4","H5","o","o","o","o","H10","H11","H12","H13","
 						["o","o","o","o","o","C1","C2","C3","C4","o","o","o","o","o"],
 						["o","o","o","o","o","B1","B2","B3","o","o","o","o","o","o"],
 						["o","o","o","o","o","o","A1","A2","o","o","o","o","o","o"]]
-
+var bookedSeats = [];
+function cartItem(){
+	this.title = "title";
+	this.day = "day";
+	this.time = "time";
+	this.ticket = ticket();
+	this.subTotalCart = "0";
+}
+function ticket(){
+	this.type = "AC";
+	this.cost = "12";
+	this.qty = "1";
+	this.seats = "F1";
+	this.subTotalTicket = "0;"
+}
 function getInfo() {
-	getMovieDetails("FO");
+	getMovieDetails("AF");
 	getMovieDetails("CH");
 	getMovieDetails("RC");
 	getMovieDetails("AC");
@@ -98,13 +115,18 @@ function getJSONTicket(){
     url: "https://saturn.csit.rmit.edu.au/~e54061/wp/movie-service.php",
     dataType: "json",
     success: function (result) {
-        console.log(result);
+        //console.log(result);
 				data = result;
 				getTicketInfo();
     }
 	});
 }
 function getMovieDetails(strType){
+	//var text = sessionStorage.getItem('cart');
+		//var obj = JSON.parse(text);
+		////console.log(obj);
+		console.log("div"+strType);
+		console.log(data);
 		var divMvDt = document.getElementById("div"+strType);
 		var objType = getObjType(strType);
 
@@ -175,8 +197,8 @@ function getMV(strType){
 	if (strType == "AC") {
 		mv = mvAC;
 	}
-	else if (strType == "FO") {
-		mv = mvFO;
+	else if (strType == "AF") {
+		mv = mvAF;
 	}
 	else if (strType == "RC") {
 		mv = mvRC;
@@ -191,8 +213,8 @@ function changeMV(strType){
 	if (strType == "AC") {
 		mvAC = mvAC*(-1);
 	}
-	else if (strType == "FO") {
-		mvFO = mvFO*(-1);
+	else if (strType == "AF") {
+		mvAF = mvAF*(-1);
 	}
 	else if (strType == "RC") {
 		mvRC = mvRC*(-1);
@@ -207,7 +229,7 @@ function moreInfo(strType){
 }
 
 function getMoreDetails(strType){
-	mv = getMV(strType);
+	var mv = getMV(strType);
 	var objType = getObjType(strType);
 	var movieSynopsis = document.getElementById("synopsis"+strType);
 	var movieSessions = document.getElementById("sessions"+strType);
@@ -225,8 +247,8 @@ function getObjType(strType){
 	if (strType == "AC") {
 		objType = data.AC;
 	}
-	else if (strType == "FO") {
-		objType = data.FO;
+	else if (strType == "AF") {
+		objType = data.AF;
 	}
 	else if (strType == "RC") {
 		objType = data.RC;
@@ -238,7 +260,7 @@ function getObjType(strType){
 }
 
 function getSessions(obj) {
-	//console.log("sessions");
+	////console.log("sessions");
 	var strSessions = "";
 	if(obj.Monday != null){
 		strSessions = strSessions + "Monday: " + obj.Monday + ",";
@@ -266,7 +288,7 @@ function getSessions(obj) {
 // END HOME
 
 function bookMovie(){
-	if (document.getElementById("price").innerHTML == "$0.00"){
+	if (document.getElementById("price").innerHTML == "0.00"){
 		document.getElementById("notickets").hidden = false;
 		return false;
 	}
@@ -301,17 +323,60 @@ function getTicketInfoDetails(strType){
 	movieDescription.innerHTML = objType.description[0] + " "+objType.description[1] + " "+objType.description[2];
 
 }
+//Toki
+function checkVoucher(str){
+	if(str == null) return false;
+	if(str[5] != "-" && str[11] != "-") return false;
+	var x1 = (((parseInt(str[0])*parseInt(str[1])) + parseInt(str[2]))*parseInt(str[3]) + parseInt(str[4]))%26;
+	var x2 = (((parseInt(str[6])*parseInt(str[7])) + parseInt(str[8]))*parseInt(str[9]) + parseInt(str[10]))%26;
+	var stLetter = str[12];
+	var ndLetter = str[13];
+	//console.log("x1: "+x1+" x2: "+x2+" 1stL: "+stLetter+" 2ndL: "+ndLetter);
+	if(str.length == 14){
+  		if(stLetter == CHAR[x1] && ndLetter == CHAR[x2]){
+		  return true;
+	 	}
+		 else return false;
+	 }
+	 else return false;
+}
 function getTicketInfo() {
+	//var txt = "12345-67890-ZI";
+	
 	if (sessionStorage.getItem("chosenMovie") == null) {
 		sessionStorage.setItem("chosenMovie","AC");
 	}
 	var stype = sessionStorage.getItem("chosenMovie");
 	getTicketInfoDetails(stype);
+	
+	/*
+	var text = '{ "employees" : [' +
+	'{ "firstName":"John" , "lastName":"Doe" },' +
+	'{ "firstName":"Anna" , "lastName":"Smith" },' +
+	'{ "firstName":"Peter" , "lastName":"Jones" } ]}';
+	sessionStorage.setItem("cart",text);
+	var obj = JSON.parse(text);
+	
+	var employee = {
+		firstName:"Lucas",
+		lastName:"Assis"
+	}
+	obj.employees.push(employee);
+	alert(obj.employees[3].firstName);
+	//console.log(obj);
+	*///obj.employees.push()
+	
+	////session_start();
+	//var session = "<?php echo $_SESSION?>";
+ 	////console.log(session);
+
+	//you may access session variable "x" as follows
+	//alert(session.x);
 	//-------------------------
 
 	//create movie NAME select option
 	var movieOpt = document.getElementById("movieOpt");
-	var movies = [getObjType("FO").title,getObjType("CH").title,getObjType("RC").title,getObjType("AC").title];
+	var movies = [getObjType("AF").title,getObjType("CH").title,getObjType("RC").title,getObjType("AC").title];
 
 	var movieOptions = document.createElement("select");
 	movieOptions.id = "film";
@@ -329,7 +394,7 @@ function getTicketInfo() {
 	selectElement(objChosen.title);
 	var dayOpt = document.getElementById("dayOpt");
 	var days = getDayOrTime(objChosen.sessions,0);
-	//console.log(days[0]);
+	////console.log(days[0]);
 
 	//CREATE DAY SELECT OPTION
 	var dayOptions = document.createElement("select");
@@ -347,7 +412,7 @@ function getTicketInfo() {
 	//create movie session TIME
 	var timeOpt = document.getElementById("timeOpt");
 	var time = getDayOrTime(objChosen.sessions,1);
-	//console.log("TIMEE"+time[0]);
+	////console.log("TIMEE"+time[0]);
 	timeOpt.appendChild(document.createTextNode(time[0]));
 	var inputTime = document.createElement("input");
 	inputTime.hidden = true;
@@ -358,11 +423,11 @@ function getTicketInfo() {
 
 	//create label total Price
 	var price = document.getElementById("price");
-	price.appendChild(document.createTextNode("$0.00"));
+	price.appendChild(document.createTextNode("0.00"));
 
 	var notickets = document.getElementById("notickets");
 	var dv = document.createElement("div");
-	notickets.appendChild(document.createTextNode("You did not select any ticket"));
+	notickets.innerHTML = "You did not select any ticket";
 	notickets.hidden = true;
 
 	var divSeatsToSelect = document.getElementById("divSeatsToSelect");
@@ -374,21 +439,651 @@ function getTicketInfo() {
 	//btnAddToCart.className = "movieButtonText";
 	btnAddToCart.onclick = function(){
 		//moreInfo(strType);
-		//console.log("lahfdlasjd");
+		////console.log("lahfdlasjd");
 		//alert("jadsja");
-		createCart();
-		};
+		var selectedSeats = checkForSelectedSeats();
+		
+		
+		//seats.booked.push()
+		//alert(selectedSeats.length)
+		if(getNumOfTickets() == selectedSeats.length && getNumOfTickets() > 0 && selectedSeats.length > 0){
+				createCart();
+				var seats = JSON.parse(sessionStorage.getItem("bkseats"));
+				console.log(seats);
+				if(seats == null) {
+					seats = {
+						booked:[]
+					}
+					//seats.booked = [];
+				}
+				for(var i = 0; i <selectedSeats.length; i++){
+					seats.booked.push(selectedSeats[i]);
+				}
+				var strSeats = JSON.stringify(seats);
+				sessionStorage.setItem("bkseats",strSeats);
+				console.log(seats);
+		}
+		
+		
+		else {
+			document.getElementById("notickets").innerHTML = "You should select the same number of tickets and seats";
+			document.getElementById("notickets").hidden = false;
+		}
+	};
 	divAddToCart.appendChild(btnAddToCart);
-
+		
 	tableCreate();
 	tableSeatCreate();
+	if (sessionStorage.getItem("cart") != null && sessionStorage.getItem("cart") != "0"){
+		//console.log("create CART");
+		preCreateCart();
+		
+	}
+	createCheckOutDiv();
+}
+function refreshCheckOut() {
+	var voucherFeedBack = document.getElementById("voucherFeedBack");
+	if(voucherFeedBack.innerHTML == "Accepted"){
+		refreshGrandPrice(true);
+	}
+	else refreshGrandPrice(false);
+}
+function createCheckOutDiv() {
+	//alert("Create");
+	var divCheckOut = document.getElementById("divCheckOut");
+	
+	var totalPrice = document.createElement("p");
+	totalPrice.id = "totalPrice";
+	divCheckOut.appendChild(totalPrice);
+	
+	var voucher = document.createElement("p");
+	voucher.id = "voucherPercentage"
+	voucher.innerHTML = "Meal and Movie Deal Voucher: 00%"
+	divCheckOut.appendChild(voucher);
+	
+	var grandPrice = document.createElement("p");
+	grandPrice.id = "grandPrice";
+	grandPrice.innerHTML = "Grand Total Price: 0"
+	divCheckOut.appendChild(grandPrice);
+	
+	var voucherCodeText = document.createElement("a");
+	voucherCodeText.innerHTML = "Voucher Code: "
+	divCheckOut.appendChild(voucherCodeText);
+	
+	var voucherCode = document.createElement("INPUT");
+    voucherCode.setAttribute("type", "text");
+	voucherCode.id = "voucherCode";
+    divCheckOut.appendChild(voucherCode);
+	
+	var applyVoucherButton = document.createElement("button");
+	applyVoucherButton.innerHTML = "Apply";
+	applyVoucherButton.onclick = function(){
+			var feedBack = document.getElementById("voucherFeedBack");
+			var txt = document.getElementById("voucherCode").value;
+			 
+      		
+			if(checkVoucher(txt) == true){
+				var voucher = document.getElementById("voucherPercentage");
+				voucher.innerHTML = "Meal and Movie Deal Voucher: 20%";
+				
+				
+				
+				feedBack.innerHTML = "Accepted";
+				
+				var user = sessionStorage.getItem("user");
+				var userObj = JSON.parse(user);
+				userObj.voucher = txt;
+				
+				var userStr = JSON.stringify(userObj);
+				sessionStorage.setItem("user",userStr);
+				
+				refreshGrandPrice(true);
+			}
+			else {
+				feedBack.innerHTML = "Not Accepted";
+			}
+	};
+	divCheckOut.appendChild(applyVoucherButton);
+	
+	var voucherFeedBack = document.createElement("a");
+	voucherFeedBack.id = "voucherFeedBack";
+	divCheckOut.appendChild(voucherFeedBack);
+	
+	/*
+	var br = document.createElement("div");
+	br.innerHTML = "<br>";
+	divCheckOut.appendChild(br);*/
+	
+	var subDiv = document.createElement("div");
+	subDiv.className = "subDivCheckOut";
+	divCheckOut.appendChild(subDiv);
+	
+	var emptyCartButton = document.createElement("button");
+	emptyCartButton.innerHTML = "Empty Cart";
+	emptyCartButton.onclick = function(){
+			//console.log("Empty");
+			deleteAllCart();
+			unCheckAllSeats();
+	};
+	subDiv.appendChild(emptyCartButton);
+
+	var checkOutButton = document.createElement("button");
+	checkOutButton.innerHTML = "Check Out";
+	checkOutButton.onclick = function(){
+			var user = sessionStorage.getItem("user");
+			var userObj = JSON.parse(user)
+			if(userObj.cart !== null && userObj.total != 0){
+				$("#inputPessoalData").show(500);
+			}
+	};
+	subDiv.appendChild(checkOutButton);
+	
+	createDivPessoalData();
+	refreshCheckOut();
+	
+}
+function testName(nameInput){  
+	var re = /([A-Z])\w+/;   
+	//console.log(re.exec(nameInput))
+	var nameFail = document.getElementById("nameFail");
+   	if (re.exec(nameInput)) nameFail.innerHTML = "" ;
+    else nameFail.innerHTML = "Only letters (Aaa..)"  ;  
+ }  
+ 
+ function testPhone(phoneInput){  
+	var re = /([0-9]{9})\w+/;  
+	var phoneFail = document.getElementById("phoneFail");
+   	if (re.exec(phoneInput)) phoneFail.innerHTML = "" ;
+    else phoneFail.innerHTML = "10 digits"  ;
+ }  
+ 
+ function testEmail(emailInput){  
+	var re = /\S+@\S+\.\S+/;   
+	var emailFail = document.getElementById("emailFail");
+   	if (re.exec(emailInput))  emailFail.innerHTML = "" ;
+    else emailFail.innerHTML = "example@example.com"  ;
+ } 
+
+function createDivPessoalData(){
+	var divInputPessoalData = document.getElementById("inputPessoalData");
+	
+	var name = document.createElement("a");
+	name.innerHTML = "Name: ";
+	divInputPessoalData.appendChild(name);
+	
+	var inputName = document.createElement("INPUT");
+    inputName.setAttribute("type", "text");
+	inputName.id = "name";
+	inputName.onkeyup=function(){
+		testName(this.value)
+	};
+    divInputPessoalData.appendChild(inputName);
+	
+	var nameFail = document.createElement("a");
+	nameFail.id = "nameFail";
+	divInputPessoalData.appendChild(nameFail);
+	
+	divInputPessoalData.appendChild(document.createElement("p"));
+	
+	var phone = document.createElement("a");
+	phone.innerHTML = "Phone: ";
+	divInputPessoalData.appendChild(phone);
+	
+	var inputPhone = document.createElement("INPUT");
+    inputPhone.setAttribute("type", "text");
+	inputPhone.id = "phone";
+	inputPhone.onkeyup=function(){
+		testPhone(this.value)
+	};
+    divInputPessoalData.appendChild(inputPhone);
+	
+	var phoneFail = document.createElement("a");
+	phoneFail.id = "phoneFail";
+	divInputPessoalData.appendChild(phoneFail);
+	
+	divInputPessoalData.appendChild(document.createElement("p"));
+	
+	var email = document.createElement("a");
+	email.innerHTML = "Email: ";
+	divInputPessoalData.appendChild(email);
+	
+	var inputEmail = document.createElement("INPUT");
+    inputEmail.setAttribute("type", "text");
+	inputEmail.id = "email";
+	inputEmail.onkeyup=function(){
+		testEmail(this.value)
+	};
+    divInputPessoalData.appendChild(inputEmail);
+	
+	var emailFail = document.createElement("a");
+	emailFail.id = "emailFail";
+	divInputPessoalData.appendChild(emailFail);
+	
+	divInputPessoalData.appendChild(document.createElement("p"));
+	
+	var bookMovieButton = document.createElement("button");
+	bookMovieButton.innerHTML = "Book Movie";
+	bookMovieButton.onclick = function(){
+		var name = document.getElementById("name").value;
+		var phone = document.getElementById("phone").value;
+		var email = document.getElementById("email").value;
+		
+		console.log(name+phone+email);
+		var user = sessionStorage.getItem("user");
+		var userObj = JSON.parse(user);
+		userObj.name = name;
+		userObj.phone = phone;
+		userObj.email = email;
+				
+		var userStr = JSON.stringify(userObj);
+		sessionStorage.setItem("user",userStr);
+		console.log(userObj);
+		
+		
+		location.href="index.php?page=print";
+		//deleteAllCart();
+	};
+	 divInputPessoalData.appendChild(bookMovieButton);
+	
+	$("#inputPessoalData").hide();
+	
 }
 
+function refreshGrandPrice(trueOrFalse){
+	var totalPrice = document.getElementById("totalPrice");
+	var grandPrice = document.getElementById("grandPrice");
+	var totalPriceNum = 0;
+	var preCart = sessionStorage.getItem("cart");
+	var preCartObj = JSON.parse(preCart);
+	if(preCartObj != null){
+		for(var i=0; i < preCartObj.length; i++){
+			totalPriceNum = totalPriceNum + preCartObj[i].sbt;
+		}
+		if(trueOrFalse) var grandPriceNum = totalPriceNum*0.8;
+		else  var grandPriceNum = totalPriceNum*1;
+		totalPrice.innerHTML = "Total Price: " + totalPriceNum.toString();
+		grandPrice.innerHTML = "Grand Total Price: " +grandPriceNum.toString();
+		//console.log(preCartObj);
+		
+		var user = sessionStorage.getItem("user");
+		var userObj = JSON.parse(user);
+		
+		userObj.total = totalPriceNum;
+		userObj.grandPrice = grandPriceNum;
+		
+		var userStr = JSON.stringify(userObj);
+		sessionStorage.setItem("user",userStr);
+		
+		console.log(userObj);
+	}
+	else {
+		totalPrice.innerHTML = "Total Price: 0";
+		grandPrice.innerHTML = "Grand Total Price: 0";
+	}
+	
+}
 function createCart(){
+
 	var divCart = document.getElementById("divCart");
 
+	var subDivCart = document.createElement("div");
+	//subDivCart.border = 1px;
+	subDivCart.className = "subDivCart";
+	divCart.appendChild(subDivCart);
+
 	var seatsSelected = checkForSelectedSeats();
-	divCart.appendChild(document.createTextNode(seatsSelected));
+	for (var i = 0; i < seatsSelected.length; i++) {
+		bookedSeats.push(seatsSelected[i]);
+	}
+	//var booked = {
+	//	booked:bookedSeats
+	//}
+	//var bookedStr = JSON.stringify(booked);
+	//sessionStorage.setItem("bkseats",bookedStr);
+	//console.log(sessionStorage.getItem("bkseats"));
+
+	var filmSelected = document.createElement("p");
+	filmSelected.innerHTML = document.getElementById("film").options[document.getElementById("film").selectedIndex].text;
+	subDivCart.appendChild(filmSelected);
+
+	var daySelected = document.getElementById("day").options[document.getElementById("day").selectedIndex].text;
+	var timeSelected = document.getElementById("timeOpt").innerHTML;
+	var dayAndTimeSelected = document.createElement("p");
+	dayAndTimeSelected.innerHTML = daySelected + ", " + timeSelected;
+	subDivCart.appendChild(dayAndTimeSelected);
+
+	//imeSelected = document.getElementById("timeOpt").innerHTML;
+	//subDivCart.appendChild(document.createTextNode(timeSelected));
+
+	var tbl  = document.createElement('table');
+	tbl.className = "cartTable";
+
+	var tr = tbl.insertRow();
+	for(var k = 0; k < 5; k++){
+		var td = tr.insertCell();
+		td.appendChild(document.createTextNode(cartTableDescrition[k]));
+		td.className = "ticketTable";
+	}
+	var indexSeat = 0;
+	//var tr = tbl.insertRow();
+	//tr.appendChild(document.createElement("hr"));
+	var tickets = [];
+	var sbtotal = 0;
+	
+	subDivCart.id = daySelected+timeSelected;
+	
+	for(var i = 0; i < 8; i++){
+			var IdAndName = ticketType[i];
+			var qtySelected = document.getElementById(IdAndName).options[document.getElementById(IdAndName).selectedIndex].text;
+
+			if(qtySelected > 0){
+				//subDivCart.appendChild(document.createTextNode(qtySelected));
+				
+				var IdAndNameIP = "individualPrice"+ticketType[i];
+				var cost = document.getElementById(IdAndNameIP);
+
+				var IdAndNameSBT = "sbt"+ticketType[i];
+				var sbt = document.getElementById(IdAndNameSBT);
+
+				var seats =[];
+				for (var j = indexSeat; j < parseInt(qtySelected)+indexSeat; j++) {
+					seats.push(seatsSelected[j]);
+					//console.log(seats);
+				}
+				indexSeat = indexSeat + parseInt(qtySelected);
+				//console.log(indexSeat);
+				var tr = tbl.insertRow();
+
+				var td1 = tr.insertCell();
+				var td2 = tr.insertCell();
+				var td3 = tr.insertCell();
+				var td4 = tr.insertCell();
+				var td5 = tr.insertCell();
+				
+				var ticketsbt = qtySelected*parseInt(cost.innerHTML);
+
+				td1.appendChild(document.createTextNode(ticketTypeName[i]));
+				td2.appendChild(document.createTextNode(cost.innerHTML));
+				td3.appendChild(document.createTextNode(qtySelected));
+				td4.appendChild(document.createTextNode(seats));
+				td5.appendChild(document.createTextNode(ticketsbt.toString()));
+				
+				var ticket = {
+					type:ticketTypeName[i],
+					cost:cost.innerHTML,
+					qty:qtySelected,
+					seats:seats
+				}
+				sbtotal = sbtotal + parseInt(sbt.innerHTML);
+				tickets.push(ticket);
+
+				td1.className = "ticketTable";
+				td2.className = "ticketTable";
+				td3.className = "ticketTable";
+				td4.className = "ticketTable";
+				td5.className = "ticketTable";
+
+			}
+		}
+		
+	var tr = tbl.insertRow();
+	for(var k = 0; k < 5; k++){
+			var td = tr.insertCell();
+			if (k==3){
+				td.appendChild(document.createTextNode("Total:"));
+				td.align = "right";
+			}
+			if (k==4){
+				td.appendChild(document.createTextNode(sbtotal.toString()));
+			}
+			else {
+				td.appendChild(document.createTextNode(""));
+			}
+			td.className = "ticketTable";
+	}
+	var cartItem = {
+		title:filmSelected.innerHTML,
+		day:daySelected,
+		time:timeSelected,
+		sbt:sbtotal,
+		tickets:tickets
+	}
+	var cartStrr = sessionStorage.getItem("cart");
+	if (cartStrr != null && cartStrr != "0"){
+			var cart = JSON.parse(cartStrr);
+	}
+	else cart = [];
+	cart.push(cartItem);
+	var user = {
+		//name:"",
+		//email:"",
+		//phone:"",
+		//voucher:"",
+		//total:0,
+		//grandTotal:0,
+		cart:cart
+	}
+	var cartStr = JSON.stringify(cart);
+	sessionStorage.setItem("cart",cartStr);
+	
+	var userStr = JSON.stringify(user);
+	sessionStorage.setItem("user",userStr);
+	
+	var divDeleteCart = document.createElement("div");
+	divDeleteCart.className = "divDeleteCart";
+	divDeleteCart.id = daySelected+timeSelected;
+		
+	var deleteButton = document.createElement("p");
+	deleteButton.id = daySelected+timeSelected;
+	deleteButton.innerHTML = "Delete Cart";
+	deleteButton.onclick = function(){
+			deleteCartItem(this.id);
+	};
+	subDivCart.appendChild(tbl);
+	divDeleteCart.appendChild(deleteButton);
+	subDivCart.appendChild(divDeleteCart);
+	unCheckAllSeats();
+	//var hr = document.createElement("div");
+	//hr.className = "hrMovie";
+	//subDivCart.appendChild(hr);
+	var br = document.createElement("div");
+	br.innerHTML = "<br>";
+	subDivCart.appendChild(br);
+	
+	refreshCheckOut();
+	
+}
+
+function preCreateCart(){
+	unCheckAllSeats();
+	var preCart = sessionStorage.getItem("cart");
+	var preCartObj = JSON.parse(preCart);
+	//console.log(preCartObj);
+	var cartItemId = [];
+	for(var i=0; i < preCartObj.length; i++){
+		var divCart = document.getElementById("divCart");
+	
+		var subDivCart = document.createElement("div");
+		
+		subDivCart.className = "subDivCart";
+		divCart.appendChild(subDivCart);
+		
+		
+		var filmSelected = document.createElement("p");
+		filmSelected.innerHTML = preCartObj[i].title;
+		subDivCart.appendChild(filmSelected);
+		
+		var daySelected = preCartObj[i].day;
+		var timeSelected = preCartObj[i].time;
+		var dayAndTimeSelected = document.createElement("p");
+		dayAndTimeSelected.innerHTML = daySelected + ", " + timeSelected;
+		subDivCart.appendChild(dayAndTimeSelected);
+		
+		var tbl = document.createElement('table');
+		tbl.className = "cartTable";
+		//var cartTableDescrition = ["Ticket Type","Cost","Quantity","Seats","Subtotal"];
+		var tr = tbl.insertRow();
+		cartItemId.push(preCartObj[i].day + preCartObj[i].time);
+		//console.log(cartItemId[i]);
+		subDivCart.id = cartItemId[i];
+		for(var k = 0; k < 5; k++){
+			var td = tr.insertCell();
+			td.appendChild(document.createTextNode(cartTableDescrition[k]));
+			td.className = "ticketTable";
+		}
+		
+		////console.log(preCartObj[i].tickets.length);
+	for(var j = 0; j < preCartObj[i].tickets.length; j++){
+				var tr = tbl.insertRow();
+
+				var td1 = tr.insertCell();
+				var td2 = tr.insertCell();
+				var td3 = tr.insertCell();
+				var td4 = tr.insertCell();
+				var td5 = tr.insertCell();
+				var qty = parseInt(preCartObj[i].tickets[j].qty)
+				var cost = parseInt(preCartObj[i].tickets[j].cost);
+				var sbtt = qty*cost;
+				////console.log(cost);
+				td1.appendChild(document.createTextNode(preCartObj[i].tickets[j].type));
+				td2.appendChild(document.createTextNode(preCartObj[i].tickets[j].cost));
+				td3.appendChild(document.createTextNode(preCartObj[i].tickets[j].qty));
+				td4.appendChild(document.createTextNode(preCartObj[i].tickets[j].seats));
+				td5.appendChild(document.createTextNode(sbtt.toString()));
+					
+				td1.className = "ticketTable";
+				td2.className = "ticketTable";
+				td3.className = "ticketTable";
+				td4.className = "ticketTable";
+				td5.className = "ticketTable";	
+			}
+			var tr = tbl.insertRow();
+			for(var k = 0; k < 5; k++){
+				var td = tr.insertCell();
+				if (k==3){
+					td.appendChild(document.createTextNode("Total:"));
+					td.align = "right";
+				}
+				if (k==4){
+					td.appendChild(document.createTextNode(preCartObj[i].sbt));
+				}
+				else {
+					td.appendChild(document.createTextNode(""));
+				}
+				td.className = "ticketTable";
+			}
+			var divDeleteCart = document.createElement("div");
+			divDeleteCart.className = "divDeleteCart";
+			divDeleteCart.id = cartItemId[i];
+			
+			var deleteButton = document.createElement("p");
+			deleteButton.id = cartItemId[i];
+			deleteButton.innerHTML = "Delete Cart";
+			deleteButton.onclick = function(){
+				//deleteDivCart(this.id);
+				deleteCartItem(this.id);
+			};
+			subDivCart.appendChild(tbl);
+			divDeleteCart.appendChild(deleteButton);
+			subDivCart.appendChild(divDeleteCart);
+	}
+}
+
+//From http://perfectionkills.com/whats-wrong-with-extending-the-dom/
+Element.prototype.remove = function() {
+    this.parentElement.removeChild(this);
+}
+NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+    for(var i = 0, len = this.length; i < len; i++) {
+        if(this[i] && this[i].parentElement) {
+            this[i].parentElement.removeChild(this[i]);
+        }
+    }
+}
+
+function deleteCartItem(dayTime) {
+	document.getElementById(dayTime).remove();
+	var seatsToReCheck = [];
+	var preCart = sessionStorage.getItem("cart");
+	var preCartObj = JSON.parse(preCart);
+	if(preCartObj != null){
+		for(var i=0; i < preCartObj.length; i++){
+			if(preCartObj[i].day+preCartObj[i].time == dayTime){
+				console.log(preCartObj[i]);
+				for(var j = 0; j < preCartObj[i].tickets.length; j++){
+					console.log(preCartObj[i].tickets[j].seats.length);
+					for(var k = 0; k < preCartObj[i].tickets[j].seats.length; k++){
+						console.log(preCartObj[i].tickets[j].seats[k]);
+						seatsToReCheck.push(preCartObj[i].tickets[j].seats[k]);
+					}
+				}
+				preCartObj.splice(i, 1);
+			}	
+		} 
+		reCheckSeats(seatsToReCheck);
+		
+		//console.log("OOOOO " + seatsToReCheck[0]+seatsToReCheck[1]+seatsToReCheck[2]);
+		
+		var cartStr = JSON.stringify(preCartObj);
+		sessionStorage.setItem("cart",cartStr);
+		
+		var user = sessionStorage.getItem("user");
+		var userObj = JSON.parse(user);
+		userObj.cart = preCartObj;
+		
+		var userStr = JSON.stringify(userObj);
+		sessionStorage.setItem("user",userStr);
+		
+		refreshCheckOut();
+	}
+}
+//TOKI
+function reCheckSeats(seatsToReCheck){
+	var seats = JSON.parse(sessionStorage.getItem("bkseats"));
+	//var bookedSeats = seats.booked;
+	
+	console.log(seats);
+	console.log("reCHECK");
+	for(var i = 0; i<seatsToReCheck.length ; i++){
+		console.log("RECHECK "+seatsToReCheck[i]);
+		$("#id"+seatsToReCheck[i]).show();
+		console.log("#id"+seatsToReCheck[i]);
+		var index;
+		for(var j = 0; j< seats.booked.length; j++){
+			if(seatsToReCheck[i] == seats.booked[j]){
+				index = j;
+			}
+		}
+		seats.booked.splice(index, 1);
+	}
+	var strSeats = JSON.stringify(seats);
+	sessionStorage.setItem("bkseats",strSeats);
+	console.log(seats);
+	unCheckAllSeats();
+}
+
+function deleteAllCart(){
+	var seats = JSON.parse(sessionStorage.getItem("bkseats"));
+	
+	seats.booked = [];
+	var preCart = sessionStorage.getItem("cart");
+	var preCartObj = JSON.parse(preCart);
+	if(preCartObj != null){
+		for(var i=0; i < preCartObj.length; i++){
+			document.getElementById(preCartObj[i].day+preCartObj[i].time).remove();
+		}
+		sessionStorage.setItem("cart","0");
+		var user = sessionStorage.getItem("user");
+		var userObj = JSON.parse(user);
+		userObj.cart = null;
+		
+		var userStr = JSON.stringify(userObj);
+		sessionStorage.setItem("user",userStr);
+		refreshCheckOut();
+	}
+	var strSeats = JSON.stringify(seats);
+	sessionStorage.setItem("bkseats",strSeats);
+	
 }
 
 function getDayOrTime(obj,DoT) { //DoT = 0 fot day and ,DoT = 1 for time
@@ -452,6 +1147,43 @@ function getDayOrTime(obj,DoT) { //DoT = 0 fot day and ,DoT = 1 for time
 	return DaysOrTimes
 }
 
+function isBooked(seatToCheck) {
+	//console.log("IS BOKED");
+	var bookedSeatss = sessionStorage.getItem("bkseats");
+	var bkSeats = JSON.parse(bookedSeatss);
+	//console.log(bkSeats.booked);
+	if(bkSeats != null){
+		//console.log(bkSeats.booked.length);
+		for (var i=0; i<bkSeats.booked.length; i++){
+			//console.log(bkSeats.booked[i] + " -- " + bkSeats.booked[i]);
+			if(seatToCheck == bkSeats.booked[i])
+			return true;
+		}
+	}
+	return false;
+}
+
+function unCheckAllSeats(){
+	console.log("UNCHECK");
+	for(var i = 0; i < 8; i++){
+			for(var j = 0; j < 14; j++){
+				if (seats[i][j] != "o" && document.getElementById("id"+seats[i][j]) != null){
+					if (document.getElementById("id"+seats[i][j]).checked /*&& isBooked(seats[i][j])*/){
+						document.getElementById("id"+seats[i][j]).checked = false;
+						$("#id"+seats[i][j]).hide();
+						//seats[i][j] = "o";
+						console.log("#id"+seats[i][j]);
+					}
+					//console.log("isbooked");
+					if (isBooked(seats[i][j])){
+						console.log("REMOVEE");
+						$("#id"+seats[i][j]).hide();
+						console.log("#id"+seats[i][j]);
+					}
+				}
+			}
+		}
+}
 
 function tableSeatCreate(){
     var tickets = document.getElementById("seats"),
@@ -470,36 +1202,47 @@ function tableSeatCreate(){
 								else {
 									var divText = document.createTextNode(seats[i][j]);
 									td.appendChild(divText);
-
-									var checkbox = document.createElement('input');
-									checkbox.type = "checkbox";
-									checkbox.name = seats[i][j];
-									checkbox.value = seats[i][j];
-									checkbox.id = "id"+seats[i][j];
-									td.appendChild(checkbox);
+									if(!isBooked(seats[i][j])){
+										var checkbox = document.createElement('input');
+										checkbox.type = "checkbox";
+										checkbox.name = seats[i][j];
+										checkbox.value = seats[i][j];
+										checkbox.id = "id"+seats[i][j];
+										td.appendChild(checkbox);
+									}
+									td.className = "seatsTable"
+	                				td.style.border = "1px solid white";
 								}
-								td.className = "seatsTable"
-                td.style.border = "1px solid white";
+
         }
     }
+	var tbll  = document.createElement('table');
+	tbll.className = "tableScreen";
+	var tr = tbll.insertRow();
+	var td = tr.insertCell();
+	var screen = document.createElement("p");
+	screen.innerHTML = "Screen";
+	td.appendChild(screen);
     tickets.appendChild(tbl);
+	tickets.appendChild(tbll);
 }
 
 function checkForSelectedSeats(){
-	//console.log(document.getElementById("id"+seats[0][0]).checked);
+	////console.log(document.getElementById("id"+seats[0][0]).checked);
 	var selectedSeats = [];
 	for(var i = 0; i < 8; i++){
 			for(var j = 0; j < 14; j++){
-				//console.log(i+j);
-				if (seats[i][j] != "o"){
+				////console.log(i+j);
+				if (seats[i][j] != "o" && document.getElementById("id"+seats[i][j]) != null){
 					var seat = document.getElementById("id"+seats[i][j]);
-					if (document.getElementById("id"+seats[i][j]).checked){
-					selectedSeats.push(document.getElementById("id"+seats[i][j]).name);
+					if (seat.checked){
+					selectedSeats.push(seat.name);
 					}
 				}
 			}
 	}
-	console.log(selectedSeats);
+	////console.log(selectedSeats);
+	document.getElementById("notickets").hidden = true;
 	return selectedSeats;
 }
 
@@ -666,7 +1409,7 @@ function tableCreate(){
 									var daySelected = day.options[day.selectedIndex].text;
 									var timeDiv = document.getElementById("timeOpt");
 									timeSelected = timeDiv.innerHTML;
-									var divText = document.createTextNode("$"+calculatePrice(daySelected,timeSelected,ticketType[i],1));
+									var divText = document.createTextNode(calculatePrice(daySelected,timeSelected,ticketType[i],1));
 									subTotalPrice.appendChild(divText);
 									td.appendChild(subTotalPrice);
 								}
@@ -675,7 +1418,7 @@ function tableCreate(){
 									var IdAndNameSBT = "sbt"+ticketType[i];
 									subTotalPrice.id =  IdAndNameSBT;
 									subTotalPrice.className = IdAndNameSBT;
-									var divText = document.createTextNode("$0.00");
+									var divText = document.createTextNode("0.00");
 									subTotalPrice.appendChild(divText);
 									td.appendChild(subTotalPrice);
 								}
@@ -713,10 +1456,10 @@ function refreshPrice(){
 
 		var subPrice = calculatePrice(daySelected,timeSelected,type.id,quantity);
 		var subPriceFloat = (subPrice).toFixed(2)
-		sbt.innerHTML = "$"+subPriceFloat.toString();
+		sbt.innerHTML = subPriceFloat.toString();
 
 		var individualPrice = calculatePrice(daySelected,timeSelected,type.id,1);
-		ip.innerHTML = "$"+individualPrice;
+		ip.innerHTML = individualPrice;
 		totalPrice = totalPrice + subPrice;
 
 	}
@@ -725,7 +1468,7 @@ function refreshPrice(){
 
 	var price = document.getElementById("price");
 	var totalPriceFloat = (totalPrice).toFixed(2);
-	price.innerHTML = "$"+totalPriceFloat.toString();
+	price.innerHTML = totalPriceFloat.toString();
 
 	var inputPrice = document.createElement("input");
 	inputPrice.hidden = true;
@@ -788,8 +1531,8 @@ function getTypeByTitle(title){
 	if (title == data.AC.title){
 		type = "AC";
 	}
-	if (title == data.FO.title){
-		type = "FO";
+	if (title == data.AF.title){
+		type = "AF";
 	}
 	if (title == data.RC.title){
 		type = "RC";
@@ -860,4 +1603,95 @@ function deleteOptions(dayOrTime){
 function selectElement(valueToSelect){
     var element = document.getElementById('film');
     element.value = valueToSelect;
+}
+
+function createBookInfo(){
+	var divBookInfo = document.getElementById("divBookInfo");
+	
+	var user = sessionStorage.getItem("user");
+	var userObj = JSON.parse(user);
+	
+	var br = document.createElement("p");
+	br.innerHTML = "<br>";
+	
+	var name = document.createElement("p");
+	name.innerHTML = "Name: "+userObj.name;
+	divBookInfo.appendChild(name);
+	
+	var phone = document.createElement("p");
+	phone.innerHTML = "Phone: "+userObj.phone;
+	divBookInfo.appendChild(phone);
+	
+	var email = document.createElement("p");
+	email.innerHTML = "Email: "+userObj.email;
+	divBookInfo.appendChild(email);
+	
+	
+	divBookInfo.appendChild(br);
+	
+	var cinema = document.createElement("p");
+	cinema.innerHTML = "Silverado Cinema";
+	divBookInfo.appendChild(cinema);
+	
+	divBookInfo.appendChild(br);
+	
+	var total = document.createElement("p");
+	total.innerHTML = "Total Price: " +userObj.total;
+	divBookInfo.appendChild(total);
+	
+	var voucher = document.createElement("p");
+	if(userObj.voucher == null) voucher.innerHTML = "No Voucher";
+	else voucher.innerHTML = "Discount 20% with voucher :"+userObj.voucher;
+	
+	divBookInfo.appendChild(voucher);
+	
+	var grandPrice = document.createElement("p");
+	grandPrice.innerHTML = "Grand Total Price: "+userObj.grandPrice;
+	divBookInfo.appendChild(grandPrice);
+	
+	
+	
+	for(var i=0; i < userObj.cart.length; i++){
+				for(var j = 0; j < userObj.cart[i].tickets.length; j++){
+					console.log(userObj.cart[i].tickets[j].seats.length);
+					for(var k = 0; k < userObj.cart[i].tickets[j].seats.length; k++){
+						console.log(userObj.cart[i].tickets[j].seats[k]);
+						var divSeat = document.createElement("div");
+						divSeat.className = "divSeat";
+						var cinema = document.createElement("p");
+						cinema.innerHTML = "Silverado Cinema";
+						divSeat.appendChild(cinema);
+						
+						var title = document.createElement("p");
+						title.innerHTML = "Title: "+userObj.cart[i].title;
+						divSeat.appendChild(title);
+						
+						var day = document.createElement("p");
+						day.innerHTML = "Day: "+userObj.cart[i].day;
+						divSeat.appendChild(day);	
+						
+						var time = document.createElement("p");
+						time.innerHTML = "Time: "+userObj.cart[i].time;
+						divSeat.appendChild(time);	
+						
+						//divSeat.appendChild(br);	
+						
+						var ttype = document.createElement("p");
+						ttype.innerHTML = "Type: "+userObj.cart[i].tickets[j].type;
+						divSeat.appendChild(ttype);
+						
+						var seat = document.createElement("p");
+						seat.innerHTML = "Seat: "+userObj.cart[i].tickets[j].seats[k];
+						divSeat.appendChild(seat);
+						
+						//divSeat.appendChild(br);
+						
+						divBookInfo.appendChild(divSeat);
+					}
+			}	
+	} 
+	
+	
+	console.log(userObj);
+	
 }

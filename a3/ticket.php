@@ -26,13 +26,15 @@
             <div id="divSeatsToSelect" class="formLabel"></div>
             <div id="seats" onchange="checkForSelectedSeats()"></div>
             <br>
-            <div class="formLabel">Total Price: <div id="price"></div></div><div id="notickets"></div>
+            <div>Total Price: <div id="price"></div></div><div id="notickets"></div>
             <br>
             <!--<div class="inputObject"><input type="submit" value="Book"> </div>-->
 
         </form>
-        <div id="divAddToCart"></div>
-        <div id="divCart"></div>
+        <div id="divAddToCart" class="divAddToCart"></div>
+        <div id="divCart" class="divCart"></div>
+        <div id="divCheckOut" class="divCheckOut"></div>
+        <div id="inputPessoalData"></div>
       </div>
     </div>
   </div>

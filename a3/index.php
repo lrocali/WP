@@ -29,7 +29,8 @@
   </header>
   <?php
     session_start();
-    $validPages=['home','ticket','prices','contact'];
+    $_SESSION['x']="y";
+    $validPages=['home','ticket','prices','contact','print'];
     if( in_array($_GET['page'],$validPages) ) {
       switch ($_GET['page']) {
         case 'home':
@@ -40,6 +41,8 @@
           include_once('prices.php'); break;
         case 'contact':
           include_once('contact.php'); break;
+        case 'print':
+          include_once('print.php'); break;
       }
     }
   ?>
