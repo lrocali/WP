@@ -7,6 +7,7 @@
         <div id="pricesAndSchedule"></div>
         <br><br>
         <div id="weeklySchedule"></div>
+        <div id="ok"></div>
       </div>
     </div>
 </body>

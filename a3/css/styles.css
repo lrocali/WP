@@ -75,9 +75,10 @@ header {
     color: white;
     background-color: #333333;
     width: 1000px ;
-    min-height: 900px;
+    min-height: 800px;
     margin-left: auto ;
     margin-right: auto ;
+    overflow:auto;
 }
 
 .ticketMain {
@@ -106,6 +107,7 @@ header {
     margin:0;
     float:left;
     padding:25px;
+    overflow: auto;
 
 }
 
@@ -169,10 +171,11 @@ header {
 
 .movie {
     width: 450px;
-    height: 300px;
+    min-height: 350px;
     float: left;
     padding: 10px;
     border-color: black;
+    overflow: auto;
 }
 .divAddToCart {
   padding:10px;
@@ -210,7 +213,8 @@ header {
 .movieDetail {
     float: right;
     width:240px;
-    min-height:300px;
+    min-height:350px;
+    text-align: center;
 }
 
 .movieDetail h1{
@@ -220,7 +224,7 @@ header {
 }
 .movieDetail p{
     font-size: 14px;
-    padding-top: 1px;
+    padding-top: 3px;
 }
 .movieButton {
     width: 240px;
@@ -328,10 +332,25 @@ footer {
    width:400px;
    margin-left:auto;
    margin-right:auto;
-  
+}
+.divSeat h1{
+   border :1px solid white;
+   text-align:center;
+   font-size: 20px;
+   
+}
+.rating {
+  width: 80px;
+  height: 30px;
+  margin-left:auto;
+  margin-right:auto;
 }
 .divSeat p{ 
    text-align:left;
+}
+.divOk {
+  text-align: center;
+  maring:20px;
 }
 @media (max-width:800px){
 

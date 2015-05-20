@@ -10,7 +10,7 @@
               </div>
               <div class="ticketInfo">
                 <h1 id="titleTicketDetail"></h1>
-                <p id="ratingTicketDetail"></p>
+                <img id="ratingTicketDetail"></img>
                 <p id="sessionsTicketDetail"></p>
                 <p id="descriptionTicketDetail"></p>
               </div>

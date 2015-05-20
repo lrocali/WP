@@ -63,7 +63,7 @@ var CHAR = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q",
 
 var movieChosen = "AAC"
 // START HOME
-var mvAC = -1, mvFO = -1, mvRC = -1, mvCH = -1;
+var mvAC = -1, mvAF = -1, mvRC = -1, mvCH = -1;
 var data;
 
 var seats = [["H1","H2","H3","H4","H5","o","o","o","o","H10","H11","H12","H13","H14"],
@@ -115,7 +115,7 @@ function getJSONTicket(){
     url: "https://saturn.csit.rmit.edu.au/~e54061/wp/movie-service.php",
     dataType: "json",
     success: function (result) {
-        //console.log(result);
+        console.log(result);
 				data = result;
 				getTicketInfo();
     }
@@ -143,25 +143,20 @@ function getMovieDetails(strType){
 		movieTitle.innerHTML = objType.title;
 		dtDiv.appendChild(movieTitle);
 
-		var movieRating = document.createElement("p");
-		movieRating.innerHTML = "Rating: G";
+		var movieRating = document.createElement("img");
+		movieRating.src = objType.rating;
+		movieRating.className = "rating"
 		dtDiv.appendChild(movieRating);
 
 		var movieSummary = document.createElement("p");
 		movieSummary.innerHTML = "Summary: " + objType.summary;
 		dtDiv.appendChild(movieSummary);
-
-		//More Detail
-		var movieSynopsis = document.createElement("p");
-		movieSynopsis.innerHTML = "";
-		movieSynopsis.id = "synopsis"+strType;
-		dtDiv.appendChild(movieSynopsis);
-
+		
 		var movieSessions = document.createElement("p");
-		movieSessions.innerHTML = "";
+		movieSessions.innerHTML = getSessions(objType.sessions);
 		movieSessions.id = "sessions"+strType;
 		dtDiv.appendChild(movieSessions);
-		//
+
 		var btnDiv = document.createElement("div");
 		btnDiv.className = "movieButton";
 		dtDiv.appendChild(btnDiv);
@@ -177,12 +172,19 @@ function getMovieDetails(strType){
 
 		var movieMore = document.createElement("button");
 		movieMore.innerHTML = "More";
+		movieMore.id = "btnMore"+strType
 		movieMore.className = "movieButtonText";
 		movieMore.onclick = function(){
 			moreInfo(strType);
 			};
 		btnDiv.appendChild(movieMore);
 
+		//Mre Detail
+		var movieSynopsis = document.createElement("p");
+		movieSynopsis.innerHTML = "";
+		movieSynopsis.id = "synopsis"+strType;
+		dtDiv.appendChild(movieSynopsis);
+		//
 		/*var hrDiv = document.createElement("div");
 		hrDiv.className="hrMovie";
 		divMvDt.appendChild(hrDiv);*/
@@ -232,14 +234,14 @@ function getMoreDetails(strType){
 	var mv = getMV(strType);
 	var objType = getObjType(strType);
 	var movieSynopsis = document.getElementById("synopsis"+strType);
-	var movieSessions = document.getElementById("sessions"+strType);
+	var movieMore = document.getElementById("btnMore"+strType);
 	if(mv == 1){
-		movieSynopsis.innerHTML = objType.description[0];
-		movieSessions.innerHTML = getSessions(objType.sessions)
+		movieSynopsis.innerHTML = "Synopsis: " + objType.description[0];
+		movieMore.innerHTML = "Less";
 	}
 	else {
 		movieSynopsis.innerHTML = "";
-		movieSessions.innerHTML = "";
+		movieMore.innerHTML = "More";
 	}
 }
 function getObjType(strType){
@@ -314,7 +316,8 @@ function getTicketInfoDetails(strType){
 	movieTitle.innerHTML = objType.title;
 
 	var movieRating = document.getElementById("ratingTicketDetail"); //--
-	movieRating.innerHTML = "Rating: G";
+	movieRating.className = "rating"
+	movieRating.src = objType.rating;
 
 	var movieSessions = document.getElementById("sessionsTicketDetail"); //--
 	movieSessions.innerHTML = getSessions(objType.sessions);
@@ -438,14 +441,7 @@ function getTicketInfo() {
 	btnAddToCart.innerHTML = "Add to Cart";
 	//btnAddToCart.className = "movieButtonText";
 	btnAddToCart.onclick = function(){
-		//moreInfo(strType);
-		////console.log("lahfdlasjd");
-		//alert("jadsja");
 		var selectedSeats = checkForSelectedSeats();
-		
-		
-		//seats.booked.push()
-		//alert(selectedSeats.length)
 		if(getNumOfTickets() == selectedSeats.length && getNumOfTickets() > 0 && selectedSeats.length > 0){
 				createCart();
 				var seats = JSON.parse(sessionStorage.getItem("bkseats"));
@@ -454,7 +450,6 @@ function getTicketInfo() {
 					seats = {
 						booked:[]
 					}
-					//seats.booked = [];
 				}
 				for(var i = 0; i <selectedSeats.length; i++){
 					seats.booked.push(selectedSeats[i]);
@@ -462,9 +457,17 @@ function getTicketInfo() {
 				var strSeats = JSON.stringify(seats);
 				sessionStorage.setItem("bkseats",strSeats);
 				console.log(seats);
-		}
+				
+				for(var i = 0; i < 8; i++){
+					var element = document.getElementById(ticketType[i]);
+    				element.value = 0;
+				}
+				refreshPrice();
+				refreshCheckOut();
+				//var qtytype = document.getElementById("SA"
+				//qtytype.
 		
-		
+		} 
 		else {
 			document.getElementById("notickets").innerHTML = "You should select the same number of tickets and seats";
 			document.getElementById("notickets").hidden = false;
@@ -513,6 +516,9 @@ function createCheckOutDiv() {
 	var voucherCode = document.createElement("INPUT");
     voucherCode.setAttribute("type", "text");
 	voucherCode.id = "voucherCode";
+	voucherCode.onkeyup=function(){
+		testVoucher(this.value)
+	};
     divCheckOut.appendChild(voucherCode);
 	
 	var applyVoucherButton = document.createElement("button");
@@ -537,7 +543,7 @@ function createCheckOutDiv() {
 				var userStr = JSON.stringify(userObj);
 				sessionStorage.setItem("user",userStr);
 				
-				refreshGrandPrice(true);
+				refreshCheckOut()
 			}
 			else {
 				feedBack.innerHTML = "Not Accepted";
@@ -582,26 +588,33 @@ function createCheckOutDiv() {
 	refreshCheckOut();
 	
 }
+function testVoucher(voucherInput){  
+	var re = /(\d{5}[\-]\d{5}[\-][A-Z]{2})/g;   
+	//console.log(re.exec(nameInput))
+	var nameFail = document.getElementById("voucherFeedBack");
+   	if (re.exec(voucherInput) && voucherInput.length == 14) nameFail.innerHTML = "" ;
+    else nameFail.innerHTML = "12345-67890-AB"  ;  
+ }  
 function testName(nameInput){  
 	var re = /([A-Z])\w+/;   
 	//console.log(re.exec(nameInput))
 	var nameFail = document.getElementById("nameFail");
-   	if (re.exec(nameInput)) nameFail.innerHTML = "" ;
+   	if (re.exec(nameInput)) nameFail.innerHTML = " " ;
     else nameFail.innerHTML = "Only letters (Aaa..)"  ;  
  }  
  
  function testPhone(phoneInput){  
 	var re = /([0-9]{9})\w+/;  
 	var phoneFail = document.getElementById("phoneFail");
-   	if (re.exec(phoneInput)) phoneFail.innerHTML = "" ;
+   	if (re.exec(phoneInput)) phoneFail.innerHTML = " " ;
     else phoneFail.innerHTML = "10 digits"  ;
  }  
  
  function testEmail(emailInput){  
 	var re = /\S+@\S+\.\S+/;   
 	var emailFail = document.getElementById("emailFail");
-   	if (re.exec(emailInput))  emailFail.innerHTML = "" ;
-    else emailFail.innerHTML = "example@example.com"  ;
+   	if (re.exec(emailInput))  emailFail.innerHTML = " " ;
+    else emailFail.innerHTML = "example@mail.com"  ;
  } 
 
 function createDivPessoalData(){
@@ -621,6 +634,7 @@ function createDivPessoalData(){
 	
 	var nameFail = document.createElement("a");
 	nameFail.id = "nameFail";
+	nameFail.innerHTML = " ";
 	divInputPessoalData.appendChild(nameFail);
 	
 	divInputPessoalData.appendChild(document.createElement("p"));
@@ -639,6 +653,7 @@ function createDivPessoalData(){
 	
 	var phoneFail = document.createElement("a");
 	phoneFail.id = "phoneFail";
+	phoneFail.innerHTML = " ";
 	divInputPessoalData.appendChild(phoneFail);
 	
 	divInputPessoalData.appendChild(document.createElement("p"));
@@ -657,6 +672,7 @@ function createDivPessoalData(){
 	
 	var emailFail = document.createElement("a");
 	emailFail.id = "emailFail";
+	emailFail.innerHTML = " ";
 	divInputPessoalData.appendChild(emailFail);
 	
 	divInputPessoalData.appendChild(document.createElement("p"));
@@ -668,19 +684,45 @@ function createDivPessoalData(){
 		var phone = document.getElementById("phone").value;
 		var email = document.getElementById("email").value;
 		
-		console.log(name+phone+email);
-		var user = sessionStorage.getItem("user");
-		var userObj = JSON.parse(user);
-		userObj.name = name;
-		userObj.phone = phone;
-		userObj.email = email;
+		var canBook = 0;
+		if (document.getElementById("nameFail").innerHTML != " "){
+			canBook = 1;
+		}
+		if($('#name').val() == ''){
+			canBook = 1;
+			document.getElementById("nameFail").innerHTML = "Input can not be left blank";
+   		}
+		   
+		if (document.getElementById("phoneFail").innerHTML != " "){
+			canBook = 1;
+		}
+		if($('#phone').val() == ''){
+			canBook = 1;
+			document.getElementById("phoneFail").innerHTML = "Input can not be left blank";
+   		}
+		   
+		if (document.getElementById("emailFail").innerHTML != " "){
+			canBook = 1
+		}
+		if($('#email').val() == ''){
+			canBook = 1;
+			document.getElementById("emailFail").innerHTML = "Input can not be left blank";
+   		}
+		if (canBook == 0){
+			console.log(name+phone+email);
+			var user = sessionStorage.getItem("user");
+			var userObj = JSON.parse(user);
+			userObj.name = name;
+			userObj.phone = phone;
+			userObj.email = email;
 				
-		var userStr = JSON.stringify(userObj);
-		sessionStorage.setItem("user",userStr);
-		console.log(userObj);
+			var userStr = JSON.stringify(userObj);
+			sessionStorage.setItem("user",userStr);
+			console.log(userObj);
 		
 		
-		location.href="index.php?page=print";
+			location.href="index.php?page=print";
+		}
 		//deleteAllCart();
 	};
 	 divInputPessoalData.appendChild(bookMovieButton);
@@ -699,17 +741,21 @@ function refreshGrandPrice(trueOrFalse){
 		for(var i=0; i < preCartObj.length; i++){
 			totalPriceNum = totalPriceNum + preCartObj[i].sbt;
 		}
-		if(trueOrFalse) var grandPriceNum = totalPriceNum*0.8;
-		else  var grandPriceNum = totalPriceNum*1;
+		var grandPriceFixed
+		if(trueOrFalse) {
+			var grandPriceNum = totalPriceNum*0.8;
+			grandPriceFixed = Number(grandPriceNum).toFixed(2);
+		}
+		else  grandPriceFixed = totalPriceNum*1;
 		totalPrice.innerHTML = "Total Price: " + totalPriceNum.toString();
-		grandPrice.innerHTML = "Grand Total Price: " +grandPriceNum.toString();
+		grandPrice.innerHTML = "Grand Total Price: " +grandPriceFixed.toString();
 		//console.log(preCartObj);
 		
 		var user = sessionStorage.getItem("user");
 		var userObj = JSON.parse(user);
 		
 		userObj.total = totalPriceNum;
-		userObj.grandPrice = grandPriceNum;
+		userObj.grandPrice = grandPriceFixed;
 		
 		var userStr = JSON.stringify(userObj);
 		sessionStorage.setItem("user",userStr);
@@ -722,6 +768,7 @@ function refreshGrandPrice(trueOrFalse){
 	}
 	
 }
+
 function createCart(){
 
 	var divCart = document.getElementById("divCart");
@@ -1063,9 +1110,11 @@ function reCheckSeats(seatsToReCheck){
 }
 
 function deleteAllCart(){
-	var seats = JSON.parse(sessionStorage.getItem("bkseats"));
-	
-	seats.booked = [];
+		var seats = JSON.parse(sessionStorage.getItem("bkseats"));
+		reCheckSeats(seats.booked);
+		seats.booked = [];
+		var strSeats = JSON.stringify(seats);
+		sessionStorage.setItem("bkseats",strSeats);
 	var preCart = sessionStorage.getItem("cart");
 	var preCartObj = JSON.parse(preCart);
 	if(preCartObj != null){
@@ -1081,8 +1130,7 @@ function deleteAllCart(){
 		sessionStorage.setItem("user",userStr);
 		refreshCheckOut();
 	}
-	var strSeats = JSON.stringify(seats);
-	sessionStorage.setItem("bkseats",strSeats);
+	
 	
 }
 
@@ -1478,6 +1526,7 @@ function refreshPrice(){
 
 	var notickets = document.getElementById("notickets");
 	notickets.hidden = true;
+	refreshGrandPrice(false);
 
 }
 
@@ -1544,8 +1593,8 @@ function getTypeByTitle(title){
 }
 
 function refreshTicketInfo(){
-	var e = document.getElementById("film");
-	var strUser = e.options[e.selectedIndex].text;
+	var film = document.getElementById("film");
+	var strUser = film.options[film.selectedIndex].text;
 	var type = getTypeByTitle(strUser);
 	var objType = getObjType(type);
 	/*
@@ -1658,7 +1707,7 @@ function createBookInfo(){
 						console.log(userObj.cart[i].tickets[j].seats[k]);
 						var divSeat = document.createElement("div");
 						divSeat.className = "divSeat";
-						var cinema = document.createElement("p");
+						var cinema = document.createElement("h1");
 						cinema.innerHTML = "Silverado Cinema";
 						divSeat.appendChild(cinema);
 						
@@ -1690,7 +1739,24 @@ function createBookInfo(){
 					}
 			}	
 	} 
-	
+	var divOk = document.createElement("div");
+	divOk.className = "divOk";
+	var btnOk = document.createElement("button");
+	btnOk.innerHTML = "Finish";
+	btnOk.onclick = function(){
+			sessionStorage.setItem("cart","0");
+			var userObj = sessionStorage.getItem("user");
+			var userObj = JSON.parse(user);
+			userObj.cart = null;
+			userObj.total = 0;
+			userObj.grandPrice = 0;
+			var userStr = JSON.stringify(userObj);
+			sessionStorage.setItem("user",userStr);
+			location.href="index.php?page=home";
+			
+	};
+	divOk.appendChild(btnOk);
+	divBookInfo.appendChild(divOk);
 	
 	console.log(userObj);
 	
